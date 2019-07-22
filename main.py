@@ -34,7 +34,7 @@ class StudentDashboardPage(webapp2.RequestHandler):
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        sCode = self.response.get('code')
+        sCode = self.request.get('code')
         tCode = 891
         if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
