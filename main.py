@@ -75,8 +75,8 @@ class TeacherSession(webapp2.RequestHandler):
 # The app config
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/', StudentDashboard),
-    ('/', StudentSession),
-    ('/', TeacherDashboard),
-    ('/', TeacherSession),
+    ('/studentDashboard', StudentDashboard),
+    ('/studentSession', StudentSession),
+    ('/teacherDashboard', TeacherDashboard),
+    ('/teacherSession', TeacherSession),
 ], debug=True)
