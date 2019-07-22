@@ -5,7 +5,7 @@
   </head>
   <body>
     {% if user %}
-    <form method="post" action="/studentDashboard">
+    <form action="/studentDashboard">
     <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
     <a href="{{logout_url}}">Logout</a>
     {% else %}
