@@ -34,9 +34,12 @@ class StudentDashboardPage(webapp2.RequestHandler):
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
-        self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(template.render())
+        sCode = self.response.get('code')
+        tCode = 891
+        if (sCode==tCode):
+            template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
+            self.response.headers['Content-Type'] = 'text/html'
+            self.response.write(template.render())
 
 class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
