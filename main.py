@@ -10,7 +10,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
+tCode=randint(100, 999)
  ############################################################################
 
 class MainPage(webapp2.RequestHandler):
@@ -36,7 +36,6 @@ class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         sCode = self.request.get('code')
-        tCode = randint(100, 999)
         if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
@@ -55,7 +54,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(template.render())
+        self.response.write(template.render({'tCode':tCode}))
 #class
 # The app config
 app = webapp2.WSGIApplication([
