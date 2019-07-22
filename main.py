@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import users
+from random import randint
 
 from models import Student, Teacher, Question
 
@@ -34,8 +35,8 @@ class StudentDashboardPage(webapp2.RequestHandler):
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        sCode = int(self.request.get('code'))
-        tCode = 891
+        sCode = self.request.get('code')
+        tCode = randint(100, 999)
         if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
