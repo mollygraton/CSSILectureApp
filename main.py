@@ -61,7 +61,7 @@ class StudentSessionPage(webapp2.RequestHandler):
         numOf3 = self.request.get('numOf3')
         numOf4 = self.request.get('numOf4')
         numOf5 = self.request.get('numOf5')
-        template2 = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
         self.redirect('/studentSession')
