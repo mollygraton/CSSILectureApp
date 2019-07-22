@@ -1,10 +1,12 @@
 from google.appengine.ext import ndb
+from google.appengine.api import users
+
 
 
 class Student(ndb.Model):
     email = ndb.StringProperty(required = True)
     room_code = ndb.IntegerProperty(required = False)
-    user = #????
+    user = users.
 
 class Teacher(ndb.Model):
     room_code = ndb.IntegerProperty(required = False)
