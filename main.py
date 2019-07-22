@@ -13,6 +13,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 tCode=randint(100, 999)
  ############################################################################
+def root_parent():
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
