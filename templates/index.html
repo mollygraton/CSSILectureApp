@@ -9,9 +9,12 @@
     <form>
     <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
     <a href="{{logout_url}}">Logout</a>
+    </form>
     {% else %}
-    <h1>Welcome!</h1>
+    <form>
+    <h1>Welcome to LectureApp!</h1>
     <a href="{{login_url}}">Login</a>
+    </form>
     {% endif %}
   </body>
 </html>
