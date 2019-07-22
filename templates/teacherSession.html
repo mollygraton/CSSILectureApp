@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>(code variable as a string here)</title>
+    <h1>Your code is {{sCode}}</h1>
+    <link rel = "stylesheet" href="/css/teacherSession.css">
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Comprehension');
+        data.addColumn('number', 'Students');
+        data.addRows([
+          ['1', {{numOf1}}],
+          ['2', {{numOf2}}],
+          ['3', {{numOf3}}],
+          ['4', {{numOf4}}],
+          ['5', {{numOf5}}]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Student Comprehension',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
+
   <body>
-    <button type="button">Activate Checkpoint</button>
-  
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+
   </body>
 </html>
