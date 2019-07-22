@@ -5,7 +5,7 @@
   </head>
   <body>
     {% if user %}
-    <h1>User is {{user.email()}}</h1>
+    <h1>Are you a <a href=studentDashboard.html>Student</a> or a <a href=teacherDashboard.html>Teacher</a>?</h1>
     <a href="{{logout_url}}">Logout</a>
     {% else %}
     <h1>Welcome!</h1>
