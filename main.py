@@ -27,7 +27,7 @@ class MainPage(webapp2.RequestHandler):
 class StudentDashboard(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
         data = {
           'user': user,
           'login_url': users.create_login_url(self.request.uri),
@@ -39,7 +39,7 @@ class StudentDashboard(webapp2.RequestHandler):
 class StudentSession(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
         data = {
           'user': user,
           'login_url': users.create_login_url(self.request.uri),
@@ -51,7 +51,7 @@ class StudentSession(webapp2.RequestHandler):
 class TeacherDashboard(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/teacherDashboard.html')
         data = {
           'user': user,
           'login_url': users.create_login_url(self.request.uri),
@@ -63,7 +63,7 @@ class TeacherDashboard(webapp2.RequestHandler):
 class TeacherSession(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/TeacherSession.html')
         data = {
           'user': user,
           'login_url': users.create_login_url(self.request.uri),
