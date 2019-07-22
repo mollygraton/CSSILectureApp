@@ -4,6 +4,8 @@ import os
 import time;
 from google.appengine.api import users
 from random import randint
+from google.appengine.ext import ndb
+
 
 from models import Student, Teacher, Question
 
