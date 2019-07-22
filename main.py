@@ -44,9 +44,8 @@ class StudentSessionPage(webapp2.RequestHandler):
 
     def post(self):
         new_question = Question(parent=root_parent())
-        new_question.name = self.request.get('question')
-        new_question.question_text()
-        new_question.timestamp(time.time())
+        new_question.question_text = self.request.get('question')
+        new_question.timestamp= time.time()
         # redirect to '/' so that the get() version of this handler will run
         # and show the list of dogs.
         self.redirect('/studentSession')
