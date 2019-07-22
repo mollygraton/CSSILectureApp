@@ -28,11 +28,6 @@ class StudentDashboardPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
-        data = {
-          'user': user,
-          'login_url': users.create_login_url(self.request.uri),
-          'logout_url': users.create_logout_url(self.request.uri),
-        }
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render(data))
 
@@ -47,11 +42,6 @@ class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherDashboard.html')
-        data = {
-          'user': user,
-          'login_url': users.create_login_url(self.request.uri),
-          'logout_url': users.create_logout_url(self.request.uri),
-        }
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render(data))
 
@@ -59,11 +49,6 @@ class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
-        data = {
-          'user': user,
-          'login_url': users.create_login_url(self.request.uri),
-          'logout_url': users.create_logout_url(self.request.uri),
-        }
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render(data))
 #class
