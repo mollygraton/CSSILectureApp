@@ -63,7 +63,7 @@ class TeacherDashboardPage(webapp2.RequestHandler):
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        template = JINJA_ENVIRONMENT.get_template('templates/TeacherSession.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         data = {
           'user': user,
           'login_url': users.create_login_url(self.request.uri),
