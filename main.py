@@ -24,7 +24,7 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render(data))
 
-class 
+#class 
 # The app config
 app = webapp2.WSGIApplication([
     ('/', MainPage),
