@@ -14,6 +14,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 tCode=randint(100, 999)
  ############################################################################
 def root_parent():
+    '''A single key to be used as the ancestor for all dog entries.
+
+    Allows for strong consistency at the cost of scalability.'''
+    return ndb.Key('Parent', 'default_parent')
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
