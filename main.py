@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+import time;
 from google.appengine.api import users
 from random import randint
 
@@ -40,6 +41,15 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             self.response.write(template.render())
+
+    def post(self):
+        new_question = Question(parent=root_parent())
+        new_question.name = self.request.get('question')
+        new_question.question_text()
+        new_question.timestamp(time.time())
+        # redirect to '/' so that the get() version of this handler will run
+        # and show the list of dogs.
+        self.redirect('/studentSession')
 
 
 class TeacherDashboardPage(webapp2.RequestHandler):
