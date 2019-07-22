@@ -6,7 +6,7 @@
   <body>
     {% if user %}
     <form method="post" action="/studentDashboard">
-    <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Student</button>?</h1>
+    <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
     <a href="{{logout_url}}">Logout</a>
     {% else %}
     <h1>Welcome!</h1>
