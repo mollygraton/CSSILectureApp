@@ -35,7 +35,7 @@ class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         sCode = self.response.get('code')
-        tCode = 
+        tCode = 891
         if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
