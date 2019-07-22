@@ -24,8 +24,59 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render(data))
 
-#class 
+class StudentDashboard(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        data = {
+          'user': user,
+          'login_url': users.create_login_url(self.request.uri),
+          'logout_url': users.create_logout_url(self.request.uri),
+        }
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write(template.render(data))
+
+class StudentSession(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        data = {
+          'user': user,
+          'login_url': users.create_login_url(self.request.uri),
+          'logout_url': users.create_logout_url(self.request.uri),
+        }
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write(template.render(data))
+
+class TeacherDashboard(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        data = {
+          'user': user,
+          'login_url': users.create_login_url(self.request.uri),
+          'logout_url': users.create_logout_url(self.request.uri),
+        }
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write(template.render(data))
+
+class TeacherSession(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        data = {
+          'user': user,
+          'login_url': users.create_login_url(self.request.uri),
+          'logout_url': users.create_logout_url(self.request.uri),
+        }
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write(template.render(data))
+#class
 # The app config
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/', StudentDashboard),
+    ('/', StudentSession),
+    ('/', TeacherDashboard),
+    ('/', TeacherSession),
 ], debug=True)
