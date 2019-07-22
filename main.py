@@ -41,7 +41,15 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             self.response.write(template.render())
-
+    def post(self):
+         numOf1 = self.request.get('numof1')
+         numOf2 = self.request.get('numOf2')
+         numOf3 = self.request.get('numOf3')
+         numOf4 = self.request.get('numOf4')
+         numOf5 = self.request.get('numOf5')
+         template2 = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
+         self.response.headers['Content-Type'] = 'text/html'
+         self.response.write(template.render())
 
 class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
