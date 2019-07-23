@@ -17,7 +17,7 @@ tCode=randint(100, 999)
 
  ############################################################################
 def root_parent():
-    '''A single key to be used as the ancestor for all dog entries.
+    '''A single key to be used as the ancestor for all entries.
     Allows for strong consistency at the cost of scalability.'''
     return ndb.Key('Parent', 'default_parent')
 
@@ -96,6 +96,35 @@ class TeacherSessionPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render({'tCode': tCode}))
+
+def GetUserInput(user):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0]
+    else:
+        # We didn't find a note, return None
+        return None
+
+class AjaxGetCurrentNote(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user is None:
+            # No user is logged in, so don't return any value.
+            self.response.status = 401
+            return
+        user_note = GetUserNote(user)
+        note = ''
+        if user_note is not None:
+            # If there was a current note, update note.
+            note = user_note.note
+        # build a dictionary that contains the data that we want to return.
+        data = {'note': note}
+        # Note the different content type.
+        self.response.headers['Content-Type'] = 'application/json'
+        # Turn data dict into a json string and write it to the response
+        self.response.write(json.dumps(data))
 #class
 # The app config
 app = webapp2.WSGIApplication([
