@@ -56,7 +56,7 @@ class StudentSessionPage(webapp2.RequestHandler):
         new_question.timestamp= time.time()
         # redirect to '/' so that the get() version of this handler will run
         # and show the list of dogs.
-        numOf1 = self.request.get('numof1')
+        numOf1 = self.request.get('numOf1')
         numOf2 = self.request.get('numOf2')
         numOf3 = self.request.get('numOf3')
         numOf4 = self.request.get('numOf4')
