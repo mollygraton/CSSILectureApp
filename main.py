@@ -55,6 +55,7 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             print "The logic is correct"
+            print(self.request.get('understanding'))
             self.response.write(template.render())
         # elif (sCode != tCode):
         #      print "You got here"
@@ -62,11 +63,6 @@ class StudentSessionPage(webapp2.RequestHandler):
         #      print sCode
         # print sCode
     def post(self):
-        numOf1 = self.request.get('numOf1')
-        numOf2 = self.request.get('numOf2')
-        numOf3 = self.request.get('numOf3')
-        numOf4 = self.request.get('numOf4')
-        numOf5 = self.request.get('numOf5')
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
