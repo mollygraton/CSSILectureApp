@@ -164,30 +164,31 @@ class TeacherSessionPage(webapp2.RequestHandler):
         print(data)
         self.response.write(template.render(data))
 
-def GetUserInput(user):
+def GetChats(user):
     '''Queries datastore to get the current value of the note associated with this user.'''
-    notes = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
-    if len(notes) > 0:
+    chats = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
+    if len(chats) > 0:
         # We found a note, return it.
-        return notes[0]
+        return chats[0]
     else:
         # We didn't find a note, return None
         return None
 
-class AjaxGetCurrentNote(webapp2.RequestHandler):
+class AjaxGetCurrentChat(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        if user is None:
+        student = GetStudent(user)
+        if student is None:
             # No user is logged in, so don't return any value.
             self.response.status = 401
             return
-        user_note = GetUserNote(user)
-        note = ''
-        if user_note is not None:
+        chat = GetChats(student)
+        all_chat = []
+        if chat is not None:
             # If there was a current note, update note.
-            note = user_note.note
+            all_chat.append(chat)
         # build a dictionary that contains the data that we want to return.
-        data = {'note': note}
+        data = {'chat': all_chat}
         # Note the different content type.
         self.response.headers['Content-Type'] = 'application/json'
         # Turn data dict into a json string and write it to the response
@@ -202,4 +203,5 @@ app = webapp2.WSGIApplication([
     ('/teacherSession', TeacherSessionPage),
     ('/addQuestion', AddQuestion),
     ('/addNumber', AddNumber),
+    ('/ajax/get_current_chat',AjaxGetCurrentChat)
 ], debug=True)

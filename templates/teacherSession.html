@@ -42,7 +42,7 @@
       <div id="questionBox" class="box">
         <div id="txtBox">
           <h1>Live Questions...:</h1>
-          <form>
+          <form id="chat_div">
           {% for each_question in questions %}
             <input type="checkbox">{{each_question.question_text}}</br>
           {% endfor %}
