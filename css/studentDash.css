@@ -2,5 +2,13 @@ body {
   background-color: #aac6fa;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 6vh;
+}
 
+#sessionCode {
+  height: 15vh;
+  width: 30vh;
+  font-size:4vh;
+  text-align: center;
 }
