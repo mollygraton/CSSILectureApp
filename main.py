@@ -39,6 +39,17 @@ def GetTeacher(user):
         # We didn't find a note, return None
         return None
 
+
+def GetCodeTeacher(student):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = Teacher.query(Teacher.code == student.code, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0].code
+    else:
+        # We didn't find a note, return None
+        return None
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -60,25 +71,25 @@ class StudentDashboardPage(webapp2.RequestHandler):
     def post(self):
         new_student = Student(parent=root_parent())
         new_student.user = users.get_current_user()
+        new_student.code = 55 #int(self.request.get("code"))
         new_student.email = (users.get_current_user()).email()
         new_student.put()
         self.redirect('/studentSession')
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
-        # user = users.get_current_user()
-        # sCode = self.request.get('code')
-        # new_student.code =
-        # if (int(sCode) == int(tCode)):
+        user = users.get_current_user()
+        GetStudent(user).code = self.request.get('code')
+        if (GetStudent(user).code == GetCodeTeacher(GetStudent(user))):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             print "The logic is correct"
             self.response.write(template.render())
-        # elif (sCode != tCode):
-        #      print "You got here"
-        #      print tCode
-        #      print sCode
-        # print sCode
+        elif (GetStudent(user).code != GetCodeTeacher(GetStudent(user))):
+             print "You got here"
+
+        print "THE TEACHER CODE IS: "+ GetCodeTeacher(GetStudent(user))
+        print "THE STUDENT CODE IS: "+ GetStudent(user).code
     def post(self):
         template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
         self.response.headers['Content-Type'] = 'text/html'
@@ -132,6 +143,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         data = {
+            "tCode": int(GetTeacher(user).code),
             "numOf1": len(number1),
             "numOf2": len(number2),
             "numOf3": len(number3),
