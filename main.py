@@ -42,7 +42,7 @@ class StudentDashboardPage(webapp2.RequestHandler):
     def post(self):
         new_student = Student(parent=root_parent())
         new_student.user = users.get_current_user()
-        new_student.email = users.get_current_user().email
+        new_student.email = (users.get_current_user()).email()
         new_student.put()
         self.redirect('/studentSession')
 
