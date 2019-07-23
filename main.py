@@ -21,6 +21,16 @@ def root_parent():
     Allows for strong consistency at the cost of scalability.'''
     return ndb.Key('Parent', 'default_parent')
 
+def GetStudent(user):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = Student.query(Student.user == user, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0]
+    else:
+        # We didn't find a note, return None
+        return None
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -73,7 +83,7 @@ class AddQuestion(webapp2.RequestHandler):
         new_question = Question(parent=root_parent())
         new_question.question_text = self.request.get('question')
         new_question.timestamp = time.time()
-        #new_question.student_key =
+        new_question.student = (GetStudent(users.get_current_user())).key.urlsafe()
         new_question.put()
         self.redirect('/studentSession')
 

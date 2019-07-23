@@ -15,6 +15,6 @@ class Teacher(ndb.Model):
     user = ndb.UserProperty() #not sure
 
 class Question(ndb.Model):
-    student_key = ndb.StringProperty()
+    student = ndb.StringProperty()
     question_text = ndb.StringProperty()
     timestamp = ndb.FloatProperty()
