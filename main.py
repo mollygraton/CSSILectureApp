@@ -38,6 +38,13 @@ class StudentDashboardPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
+    def post(self):
+        new_student = Student(parent=root_parent())
+        new_student.user = users.get_current_user()
+        new_student.email = users.get_current_user().email
+        #new_student.code = 
+        new_student.put()
+        self.redirect('/studentSession')
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
