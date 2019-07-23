@@ -21,19 +21,23 @@ body {
   background-color: white;
   height: 90vh;
   float: right;
-  width: 48%;
+  width: 40%;
+  margin-left: 1vw;
+  margin-right: 4vw;
 }
 
 #chart_div {
   /* margin-left: 4vw; */
   width: 48%;
-  float: left
+  float: left;
+  margin-left: 4vw;
+  margin-right: 1vw;
 }
 
-.box{
-	/* outline-style:dotted; */
+/* .box{
+
 }
 
 #txtBox {
   margin-left: 2%;
-}
+} */
