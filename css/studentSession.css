@@ -2,18 +2,52 @@ body {
   background-color: #aac6fa;
   font-family: 'Montserrat', sans-serif;
   color: white;
+  vertical-align: middle;
 }
 
-h1 {
+.understandingheader {
   font-size:50px;
 }
 
 .understanding {
   font-size:25px;
   font-family:'Montserrat', sans-serif;
+  color:white;
+  text-decoration:none;
+  background-color: #b6cdfc;
+  border-color: grey;
 }
 
 .und_submit {
   font-family:'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  color: #aac6fa;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:200px;
+}
 
+.questionheader {
+  font-size:50px;
+}
+
+.questionbox {
+  height:12vh;
+  width:40vw;
+  font-size:35px;
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.qsubmit {
+  font-family:'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  color: #aac6fa;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:200px;
 }
