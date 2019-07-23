@@ -47,13 +47,7 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             self.response.write(template.render())
-
     def post(self):
-        new_question = Question(parent=root_parent())
-        new_question.question_text = self.request.get('question')
-        new_question.timestamp= time.time()
-        # redirect to '/' so that the get() version of this handler will run
-        # and show the list of dogs.
         numOf1 = self.request.get('numof1')
         numOf2 = self.request.get('numOf2')
         numOf3 = self.request.get('numOf3')
@@ -62,6 +56,13 @@ class StudentSessionPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
+        self.redirect('/studentSession')
+class AddQuestion(webapp2.RequestHandler):
+    def post(self):
+        new_question = Question(parent=root_parent())
+        new_question.question_text = self.request.get('question')
+        new_question.timestamp = time.time()
+        new_question.put()
         self.redirect('/studentSession')
 
 class TeacherDashboardPage(webapp2.RequestHandler):
@@ -85,4 +86,5 @@ app = webapp2.WSGIApplication([
     ('/studentSession', StudentSessionPage),
     ('/teacherDashboard', TeacherDashboardPage),
     ('/teacherSession', TeacherSessionPage),
+    ('/addQuestion', AddQuestion),
 ], debug=True)
