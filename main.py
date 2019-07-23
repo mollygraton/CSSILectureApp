@@ -84,10 +84,10 @@ class TeacherDashboardPage(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
-        new_teacher = Question(parent=root_parent())
-        new_question.question_text = self.request.get('question')
-        new_question.timestamp = time.time()
-        new_question.put()
+        new_teacher = Teacher(parent=root_parent())
+        new_teacher.teacher_code = random.randint(100,999)
+        # new_teacher.email = 
+        new_teacher.put()
         self.redirect('/studentSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
