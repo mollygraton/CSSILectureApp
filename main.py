@@ -65,6 +65,7 @@ class AddQuestion(webapp2.RequestHandler):
         new_question = Question(parent=root_parent())
         new_question.question_text = self.request.get('question')
         new_question.timestamp = time.time()
+        #new_question.student_key =
         new_question.put()
         self.redirect('/studentSession')
 
