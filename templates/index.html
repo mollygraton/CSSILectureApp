@@ -7,11 +7,11 @@
   <body>
     {% if user %}
     <form>
-    <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
-    <a href="{{logout_url}}">Logout</a>
+    <center><h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
+    <a href="{{logout_url}}">Logout</a></center>
     {% else %}
-    <h1>Welcome!</h1>
-    <a href="{{login_url}}">Login</a>
+    <center><h1>Welcome!</h1>
+    <a href="{{login_url}}">Login</a></center>
     {% endif %}
   </body>
 </html>
