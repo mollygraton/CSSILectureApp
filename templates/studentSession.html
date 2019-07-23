@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
-    <center><h1>Enter your level of understanding</h1>
+    <h1>{{sCode}}</h1>
+    <center><h1 class="understandingheader">Enter your level of understanding:</h1>
+
     <!-- <h2>{{open_closed}}</h2> -->
     <form method="post" action="/addNumber" >
       <select name="understanding" class="understanding">
@@ -16,15 +18,15 @@
         <option value="3">Three</option>
         <option value="4">Four</option>
         <option value="5">Five</option>
-      </select>
-      <button type="submit" class="und_submit">Submit</button>
+      </select><br><br>
+      <button type="submit" class="und_submit">Submit Feedback</button>
     </form>
     <form action="/addQuestion" method="post">
       <div>
-        <h2>Enter Question</h2>
-        <input type="text" name="question" value="">
-        <br>
-        <input type="Submit" name="" value="Enter">
+        <h2 class="questionheader">Enter Question:</h2>
+        <input type="text" name="question" value="" class="questionbox">
+        <br><br>
+        <button type="Submit" name="" value="Enter" class="qsubmit">Submit Question</button>
       </div>
     </form>
   </body>
