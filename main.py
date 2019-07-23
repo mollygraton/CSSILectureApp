@@ -55,7 +55,7 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             print "The logic is correct"
-            print(self.request.get('understanding'))
+            print self.request.get('understanding')
             self.response.write(template.render())
         # elif (sCode != tCode):
         #      print "You got here"
