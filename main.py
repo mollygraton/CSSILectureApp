@@ -41,12 +41,15 @@ class StudentDashboardPage(webapp2.RequestHandler):
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
-        # user = users.get_current_user()
-        # sCode = self.request.get('code')
-        # if (sCode==tCode):
-            template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
+        user = users.get_current_user()
+        sCode = self.request.get('code')
+        if (sCode==tCode):
+            template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             self.response.write(template.render())
+        else:
+            print("not the correct code!")
+
     def post(self):
         numOf1 = self.request.get('numof1')
         numOf2 = self.request.get('numOf2')
