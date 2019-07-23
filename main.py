@@ -51,7 +51,7 @@ class StudentSessionPage(webapp2.RequestHandler):
             print("not the correct code!")
 
     def post(self):
-        numOf1 = self.request.get('numof1')
+        numOf1 = self.request.get('numOf1')
         numOf2 = self.request.get('numOf2')
         numOf3 = self.request.get('numOf3')
         numOf4 = self.request.get('numOf4')
