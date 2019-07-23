@@ -86,7 +86,7 @@ class TeacherDashboardPage(webapp2.RequestHandler):
     def post(self):
         new_teacher = Teacher(parent=root_parent())
         new_teacher.teacher_code = random.randint(100,999)
-        # new_teacher.email = 
+        # new_teacher.email =
         new_teacher.put()
         self.redirect('/studentSession')
 
@@ -95,7 +95,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(template.render({'tCode':tCode}))
+        self.response.write(template.render({'tCode': tCode}))
 #class
 # The app config
 app = webapp2.WSGIApplication([
