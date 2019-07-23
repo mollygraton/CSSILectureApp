@@ -6,12 +6,12 @@ from google.appengine.api import users
 class Student(ndb.Model):
     email = ndb.StringProperty()
     code = ndb.IntegerProperty()
-    user = users.get_current_user() #not sure
+    user = ndb.UserProperty() #not sure
 
 class Teacher(ndb.Model):
     code = ndb.IntegerProperty()
     email = ndb.StringProperty()
-    user = users.get_current_user() #not sure
+    user = ndb.UserProperty() #not sure
 
 class Question(ndb.Model):
     student_key = ndb.StringProperty()
