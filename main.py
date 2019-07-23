@@ -44,9 +44,9 @@ class StudentSessionPage(webapp2.RequestHandler):
         # user = users.get_current_user()
         # sCode = self.request.get('code')
         # if (sCode==tCode):
-            template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
-            self.response.headers['Content-Type'] = 'text/html'
-            self.response.write(template.render())
+        template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
+        self.response.headers['Content-Type'] = 'text/html'
+        self.response.write(template.render())
 
     def post(self):
         new_question = Question(parent=root_parent())
