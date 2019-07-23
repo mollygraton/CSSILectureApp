@@ -3,3 +3,17 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
+
+h1 {
+  font-size:50px;
+}
+
+.understanding {
+  font-size:25px;
+  font-family:'Montserrat', sans-serif;
+}
+
+.und_submit {
+  font-family:'Montserrat', sans-serif;
+
+}
