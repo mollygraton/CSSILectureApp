@@ -5,11 +5,11 @@ from google.appengine.api import users
 
 class Student(ndb.Model):
     email = ndb.StringProperty(required = True)
-    room_code = ndb.IntegerProperty(required = False)
+    code = ndb.IntegerProperty(required = False)
     user = users.get_current_user() #not sure
 
 class Teacher(ndb.Model):
-    room_code = ndb.IntegerProperty(required = False)
+    code = ndb.IntegerProperty(required = False)
     email = ndb.StringProperty(required = True)
     user = users.get_current_user() #not sure
 
