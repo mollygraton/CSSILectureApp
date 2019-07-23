@@ -71,7 +71,7 @@ class StudentDashboardPage(webapp2.RequestHandler):
     def post(self):
         new_student = Student(parent=root_parent())
         new_student.user = users.get_current_user()
-        new_student.code = 55 #int(self.request.get("code"))
+        new_student.code = int(self.request.get("code"))
         new_student.email = (users.get_current_user()).email()
         new_student.put()
         self.redirect('/studentSession')
@@ -79,7 +79,6 @@ class StudentDashboardPage(webapp2.RequestHandler):
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        GetStudent(user).code = self.request.get('code')
         if (GetStudent(user).code == GetCodeTeacher(GetStudent(user))):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
@@ -88,8 +87,8 @@ class StudentSessionPage(webapp2.RequestHandler):
         elif (GetStudent(user).code != GetCodeTeacher(GetStudent(user))):
              print "You got here"
 
-        print "THE TEACHER CODE IS: "+ GetCodeTeacher(GetStudent(user))
-        print "THE STUDENT CODE IS: "+ GetStudent(user).code
+        print "THE TEACHER CODE IS: " + str(GetCodeTeacher(GetStudent(user)))
+        print "THE STUDENT CODE IS: " + str(GetStudent(user).code)
     def post(self):
         template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
         self.response.headers['Content-Type'] = 'text/html'
