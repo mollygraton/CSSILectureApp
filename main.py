@@ -69,12 +69,20 @@ class StudentDashboardPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
     def post(self):
-        new_student = Student(parent=root_parent())
-        new_student.user = users.get_current_user()
-        new_student.code = int(self.request.get("code"))
-        new_student.email = (users.get_current_user()).email()
-        new_student.put()
-        self.redirect('/studentSession')
+        if GetStudent(users.get_current_user()) == None:
+            new_student = Student(parent=root_parent())
+            new_student.user = users.get_current_user()
+            new_student.code = int(self.request.get("code"))
+            new_student.email = (users.get_current_user()).email()
+            new_student.put()
+            self.redirect('/studentSession')
+        else :
+            newCode = int(self.request.get("code"))
+            currentStudent = GetStudent(users.get_current_user())
+            currentStudent.code = newCode
+            currentStudent.put()
+            self.redirect('/studentSession')
+
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
@@ -119,15 +127,19 @@ class TeacherDashboardPage(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
-        #if GetTeacher(user) == None:
+        if GetTeacher(users.get_current_user()) == None:
             new_teacher = Teacher(parent=root_parent())
             new_teacher.user = users.get_current_user()
             new_teacher.email = (users.get_current_user()).email()
             new_teacher.code = randint(100,999)
             new_teacher.put()
             self.redirect('/teacherSession')
-        #else:
-        #    self.redirect('/teacherSession')
+        else:
+            newCode = randint(100,999)
+            currentTeacher = GetTeacher(users.get_current_user())
+            currentTeacher.code = newCode
+            currentTeacher.put()
+            self.redirect('/teacherSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
