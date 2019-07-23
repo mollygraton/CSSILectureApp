@@ -3,8 +3,10 @@
   <head>
     <title>Main</title>
     <link rel = "stylesheet" href="/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="box">
     {% if user %}
     <form>
     <h1>Are you a <button formaction="/studentDashboard">Student</button> or a <button formaction="/teacherDashboard">Teacher</button>?</h1>
@@ -15,6 +17,7 @@
     <h1>Welcome to LectureApp!</h1>
     <a href="{{login_url}}">Login</a>
     </form>
+  </div>
     {% endif %}
   </body>
 </html>

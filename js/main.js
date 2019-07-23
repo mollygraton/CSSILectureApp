@@ -1,1 +1,1 @@
-const teacher_code = document.querySelector('#teacher_code')
+const tcode = document.querySelector('#tcode')

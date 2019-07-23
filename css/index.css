@@ -11,4 +11,16 @@ body {
   margin-top: 30vh;
   background-color: #aac6fa;
   text-align:center;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+div {
+  align-self: center;
+  margin-top: 30vh;
+  margin-left: 30vh;
+  margin-right: 30vh;
+  border: 15px solid green;
+  padding: 50px;
+
 }
