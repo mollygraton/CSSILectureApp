@@ -1,13 +1,19 @@
 
 
 button {
-  height: 3vw;
-  width: 12vh;
-  background-color: #ebf1ff;
+  height: 4vw;
+  width: 15vh;
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
+  padding-right:10px;
+  color:#87aef7;
+  font-weight:bolder;
 }
 
 
 body {
+  font-size: 4vh;
   margin-top: 30vh;
   background-color: #aac6fa;
   text-align:center;
