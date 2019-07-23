@@ -12,7 +12,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-tCode=randint(100, 999)
+
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all dog entries.
@@ -41,14 +41,14 @@ class StudentDashboardPage(webapp2.RequestHandler):
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
-        # user = users.get_current_user()
-        # sCode = self.request.get('code')
-        # if (sCode==tCode):
+        user = users.get_current_user()
+        sCode = self.request.get('code')
+        if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             self.response.write(template.render())
-        # else:
-        #     print("not the correct code!")
+        else:
+            print("not the correct code!")
 
     def post(self):
         new_question = Question(parent=root_parent())
