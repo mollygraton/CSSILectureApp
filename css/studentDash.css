@@ -12,3 +12,11 @@ body {
   font-size:4vh;
   text-align: center;
 }
+
+#codeInput {
+  height:12vh;
+  width:40vw;
+  font-size:35px;
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+}

@@ -12,7 +12,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-###TO DO : MAKE SURE THERE ARE NO REPEATS IN DATABASE
+###TO DO : TeacherSession HTML and Python for OpenForm/CloseForm ADD to Teacher model?
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all entries.
@@ -39,6 +39,15 @@ def GetTeacher(user):
         # We didn't find a note, return None
         return None
 
+def GetUserInput(user):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0]
+    else:
+        # We didn't find a note, return None
+        return None
 
 def GetCodeTeacher(student):
     '''Queries datastore to get the current value of the note associated with this user.'''
@@ -164,15 +173,19 @@ class TeacherSessionPage(webapp2.RequestHandler):
         print(data)
         self.response.write(template.render(data))
 
-def GetChats(user):
-    '''Queries datastore to get the current value of the note associated with this user.'''
-    chats = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
-    if len(chats) > 0:
-        # We found a note, return it.
-        return chats[0]
-    else:
-        # We didn't find a note, return None
-        return None
+class DeleteNames(webapp2.RequestHandler):
+    def post(self):
+        to_delete = self.request.get('to_delete', allow_multiple=True)
+        for entry in to_delete:
+            key = ndb.Key(urlsafe=entry)
+            key.delete()
+        self.redirect('/teacherSession')
+
+class OpenForm(webapp2.RequestHandler):
+    def post(self):
+        open_close
+
+        self.redirect('/teacherSession')
 
 class AjaxGetCurrentChat(webapp2.RequestHandler):
     def get(self):
@@ -191,7 +204,6 @@ class AjaxGetCurrentChat(webapp2.RequestHandler):
         data = {'chat': all_chat}
         # Note the different content type.
         self.response.headers['Content-Type'] = 'application/json'
-        # Turn data dict into a json string and write it to the response
         self.response.write(json.dumps(data))
 #class
 # The app config
@@ -203,5 +215,8 @@ app = webapp2.WSGIApplication([
     ('/teacherSession', TeacherSessionPage),
     ('/addQuestion', AddQuestion),
     ('/addNumber', AddNumber),
-    ('/ajax/get_current_chat',AjaxGetCurrentChat)
+    ('/ajax/get_current_chat',AjaxGetCurrentChat),
+    ('/deleteNames', DeleteNames),
+    ('/openForm', OpenForm),
+
 ], debug=True)

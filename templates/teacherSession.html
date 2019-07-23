@@ -2,6 +2,7 @@
   <head>
     <link rel = "stylesheet" href="/css/teacherSession.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <Title>LMK Session</Title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
@@ -18,7 +19,6 @@
         total3 = {{numOf3}}
         total4 = {{numOf4}}
         total5 = {{numOf5}}
-
         data.addRows([
           ['1', total1],
           ['2', total2],
@@ -38,14 +38,18 @@
     <!--Div that will hold the pie chart-->
     <h1>Welcome to your new session!</h1>
     <h2>Your class number is {{tCode}} </h2>
+    <!-- <form action="/openFive" method="post">
+      <input type="submit" name="" value="{{open_close}}"></input>
+    </form> -->
       <div id="chart_div" class="box"></div>
       <div id="questionBox" class="box">
         <div id="txtBox">
           <h1>Live Questions...:</h1>
-          <form id="chat_div">
+          <form action="/deleteNames" method="post" id="chat_div">
           {% for each_question in questions %}
-            <input type="checkbox">{{each_question.question_text}}</br>
+            <input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}">{{each_question.question_text}}</br>
           {% endfor %}
+            <input type="submit" name="" value="Delete Selected"></input>
         </form>
         </div>
     </div>
