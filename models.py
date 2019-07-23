@@ -16,4 +16,4 @@ class Teacher(ndb.Model):
 class Question(ndb.Model):
     student_key = ndb.StringProperty(required=True)
     question_text = ndb.StringProperty(required=True)
-    timestamp = ndb.IntegerProperty(required=True)
+    timestamp = ndb.FloatProperty(required=True)

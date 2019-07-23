@@ -14,6 +14,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 tCode=randint(100, 999)
  ############################################################################
+def root_parent():
+    '''A single key to be used as the ancestor for all dog entries.
+
+    Allows for strong consistency at the cost of scalability.'''
+    return ndb.Key('Parent', 'default_parent')
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -54,7 +59,7 @@ class StudentSessionPage(webapp2.RequestHandler):
         numOf3 = self.request.get('numOf3')
         numOf4 = self.request.get('numOf4')
         numOf5 = self.request.get('numOf5')
-        template2 = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
         self.redirect('/studentSession')
