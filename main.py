@@ -62,7 +62,7 @@ class StudentSessionPage(webapp2.RequestHandler):
         #      print sCode
         # print sCode
     def post(self):
-        template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
         print self.request.get('understanding')
