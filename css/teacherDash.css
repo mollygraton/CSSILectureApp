@@ -2,3 +2,12 @@ body {
   background-color: #aac6fa;
   text-align: center;
 }
+
+
+button {
+    margin-top: 20vh;
+    height: 6vw;
+    width: 36vh;
+    background-color: #ebf1ff;
+    font-size: 35px;
+}
