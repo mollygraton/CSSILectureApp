@@ -3,12 +3,13 @@
 button {
   height: 4vw;
   width: 15vh;
-  background-color: #ffffff;
+  background-color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5vh;
   padding-right:10px;
   color:#87aef7;
   font-weight:bolder;
+  text-decoration: none;
 }
 
 
