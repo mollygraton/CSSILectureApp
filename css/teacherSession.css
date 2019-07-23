@@ -1,5 +1,39 @@
 body {
-  background-color: #aac6fa
+  background-color: #aac6fa;
   font-family: 'Montserrat', sans-serif;
+}
 
+
+@media screen and (max-width: 992px) {
+  .box {
+    width: 45%;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .box {
+    width: 90%;
+  }
+}
+
+#questionBox {
+  background-color: white;
+  height: 90vh;
+  float: right;
+  width: 48%;
+}
+
+#chart_div {
+  /* margin-left: 4vw; */
+  width: 48%;
+  float: left
+}
+
+.box{
+	/* outline-style:dotted; */
+}
+
+#txtBox {
+  margin-left: 2%;
 }
