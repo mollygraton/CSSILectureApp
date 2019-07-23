@@ -43,24 +43,24 @@ class StudentDashboardPage(webapp2.RequestHandler):
         new_student = Student(parent=root_parent())
         new_student.user = users.get_current_user()
         new_student.email = users.get_current_user().email
-        #new_student.code =
         new_student.put()
         self.redirect('/studentSession')
 
 class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        sCode = self.request.get('code')
-        if (int(sCode) == int(tCode)):
+        # user = users.get_current_user()
+        # sCode = self.request.get('code')
+        # new_student.code =
+        # if (int(sCode) == int(tCode)):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             print "The logic is correct"
             self.response.write(template.render())
-        elif (sCode != tCode):
-             print "You got here"
-             print tCode
-             print sCode
-        print sCode
+        # elif (sCode != tCode):
+        #      print "You got here"
+        #      print tCode
+        #      print sCode
+        # print sCode
     def post(self):
         numOf1 = self.request.get('numOf1')
         numOf2 = self.request.get('numOf2')
