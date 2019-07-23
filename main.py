@@ -13,6 +13,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+tCode = 999
+
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all dog entries.
@@ -93,13 +95,12 @@ class TeacherDashboardPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherDashboard.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
-
-    def post(self):
-        new_teacher = Teacher(parent=root_parent())
-        new_teacher.teacher_code = random.randint(100,999)
-        # new_teacher.email =
-        new_teacher.put()
-        self.redirect('/studentSession')
+    #
+    # def post(self):
+    #     new_teacher = Teacher(parent=root_parent())
+    #     # new_teacher.email =
+    #     new_teacher.put()
+    #     self.redirect('/studentSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
