@@ -162,6 +162,16 @@ def GetUserInput(user):
         # We didn't find a note, return None
         return None
 
+class DeleteNames(webapp2.RequestHandler):
+    def post(self):
+        to_delete = self.request.get('to_delete', allow_multiple=True)
+        for entry in to_delete:
+            key = ndb.Key(urlsafe=entry)
+            key.delete()
+        # redirect to '/' so that the MainPage.get() handler will run and show
+        # the list of dogs.
+        self.redirect('/teacherSession')
+
 class AjaxGetCurrentNote(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -190,4 +200,5 @@ app = webapp2.WSGIApplication([
     ('/teacherSession', TeacherSessionPage),
     ('/addQuestion', AddQuestion),
     ('/addNumber', AddNumber),
+    ('/deleteNames', DeleteNames),
 ], debug=True)

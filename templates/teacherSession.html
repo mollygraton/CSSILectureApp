@@ -42,10 +42,11 @@
       <div id="questionBox" class="box">
         <div id="txtBox">
           <h1>Live Questions...:</h1>
-          <form>
+          <form action="/deleteNames" method="post">
           {% for each_question in questions %}
-            <input type="checkbox">{{each_question.question_text}}</br>
+            <input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}">{{each_question.question_text}}</br>
           {% endfor %}
+            <input type="submit" name="" value="Delete Selected"></input>
         </form>
         </div>
     </div>
