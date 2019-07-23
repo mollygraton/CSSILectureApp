@@ -43,6 +43,7 @@ class StudentSessionPage(webapp2.RequestHandler):
     def get(self):
         # user = users.get_current_user()
         # sCode = self.request.get('code')
+        # testCode = tCode
         # if (sCode==tCode):
             template = JINJA_ENVIRONMENT.get_template('templates/StudentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
@@ -54,7 +55,7 @@ class StudentSessionPage(webapp2.RequestHandler):
         new_question.timestamp= time.time()
         # redirect to '/' so that the get() version of this handler will run
         # and show the list of dogs.
-        numOf1 = self.request.get('numof1')
+        numOf1 = self.request.get('numOf1')
         numOf2 = self.request.get('numOf2')
         numOf3 = self.request.get('numOf3')
         numOf4 = self.request.get('numOf4')
