@@ -13,8 +13,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-tCode=randint(100, 999)
-
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all entries.
@@ -24,6 +22,16 @@ def root_parent():
 def GetStudent(user):
     '''Queries datastore to get the current value of the note associated with this user.'''
     notes = Student.query(Student.user == user, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0]
+    else:
+        # We didn't find a note, return None
+        return None
+
+def GetTeacher(user):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = Teacher.query(Teacher.user == user, ancestor=root_parent()).fetch()
     if len(notes) > 0:
         # We found a note, return it.
         return notes[0]
@@ -117,16 +125,19 @@ class TeacherDashboardPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherDashboard.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
-    #
-    # def post(self):
-    #     new_teacher = Teacher(parent=root_parent())
-    #     # new_teacher.email =
-    #     new_teacher.put()
-    #     self.redirect('/studentSession')
+
+    def post(self):
+        new_teacher = Teacher(parent=root_parent())
+        new_teacher.user = users.get_current_user()
+        new_teacher.email = (users.get_current_user()).email()
+        new_teacher.code = randint(100,999)
+        new_teacher.put()
+        self.redirect('/teacherSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render({'tCode': tCode}))
