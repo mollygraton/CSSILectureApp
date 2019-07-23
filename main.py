@@ -133,12 +133,11 @@ class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         number1 = Number.query(Number.num1to5 == 1).fetch()
-        print(number1)
         number2 = Number.query(Number.num1to5 == 2).fetch()
-        print(number2)
         number3 = Number.query(Number.num1to5 == 3).fetch()
         number4 = Number.query(Number.num1to5 == 4).fetch()
         number5 = Number.query(Number.num1to5 == 5).fetch()
+        questions = Question.query().fetch()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         data = {
@@ -147,7 +146,8 @@ class TeacherSessionPage(webapp2.RequestHandler):
             "numOf2": len(number2),
             "numOf3": len(number3),
             "numOf4": len(number4),
-            "numOf5": len(number5)
+            "numOf5": len(number5),
+            "questions": questions
         }
         print(data)
         self.response.write(template.render(data))
