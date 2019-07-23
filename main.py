@@ -95,29 +95,11 @@ class AddQuestion(webapp2.RequestHandler):
         self.redirect('/studentSession')
 
 class AddNumber(webapp2.RequestHandler):
-    def get(self):
-        number1 = Number.query(Number.num1to5 == 1).fetch()
-        number2 = Number.query(Number.num1to5 == 2).fetch()
-        number3 = Number.query(Number.num1to5 == 3).fetch()
-        number4 = Number.query(Number.num1to5 == 4).fetch()
-        number5 = Number.query(Number.num1to5 == 5).fetch()
-        template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
-        self.response.headers['Content-Type'] = 'text/html'
-        data = {
-            "numOf1": len(number1),
-            "numOf2": len(number2),
-            "numOf3": len(number3),
-            "numOf4": len(number4),
-            "numOf5": len(number5)
-        }
-        self.response.write(template.render(data))
-        self.redirect('/studentSession')
-
     def post(self):
         new_number = Number(parent=root_parent())
         new_number.num1to5 = int(self.request.get('understanding'))
         new_number.put()
-        self.redirect('/addNumber')
+        self.redirect('/studentSession')
 
 class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
@@ -140,10 +122,24 @@ class TeacherDashboardPage(webapp2.RequestHandler):
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-
+        number1 = Number.query(Number.num1to5 == 1).fetch()
+        print(number1)
+        number2 = Number.query(Number.num1to5 == 2).fetch()
+        print(number2)
+        number3 = Number.query(Number.num1to5 == 3).fetch()
+        number4 = Number.query(Number.num1to5 == 4).fetch()
+        number5 = Number.query(Number.num1to5 == 5).fetch()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(template.render({'tCode': tCode}))
+        data = {
+            "numOf1": len(number1),
+            "numOf2": len(number2),
+            "numOf3": len(number3),
+            "numOf4": len(number4),
+            "numOf5": len(number5)
+        }
+        print(data)
+        self.response.write(template.render(data))
 
 def GetUserInput(user):
     '''Queries datastore to get the current value of the note associated with this user.'''

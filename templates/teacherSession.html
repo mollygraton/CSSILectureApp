@@ -1,41 +1,35 @@
-<!DOCTYPE html>
 <html>
   <head>
     <link rel = "stylesheet" href="/css/teacherSession.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
+    function drawChart() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Comprehension');
+        data.addColumn('string', 'Understanding');
         data.addColumn('number', 'Students');
+        total1 = {{numOf1}}
+        total2 = {{numOf2}}
+        total3 = {{numOf3}}
+        total4 = {{numOf4}}
+        total5 = {{numOf5}}
+
         data.addRows([
-          ['1', {{numOf1}}],
-          ['2', {{numOf2}}],
-          ['3', {{numOf3}}],
-          ['4', {{numOf4}}],
-          ['5', {{numOf5}}]
+          ['1', total1],
+          ['2', total2],
+          ['3', total3],
+          ['4', total4],
+          ['5', total5]
         ]);
 
-        // Set chart options
-        var options = {'title':'Student Comprehension',
+        var options = {'title':'General Class Comprehension',
                        'width':400,
                        'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
@@ -43,10 +37,10 @@
   </head>
 
   <body>
-    <h1>Your code is {{tCode}}</h1>
-    <div id = "teacher_code"></div>
+    <div id="questionBox">
+    </div>
     <!--Div that will hold the pie chart-->
+    <h1>Your code is... </h1>
     <div id="chart_div"></div>
-
   </body>
 </html>
