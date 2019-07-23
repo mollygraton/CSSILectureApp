@@ -109,12 +109,15 @@ class TeacherDashboardPage(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
-        new_teacher = Teacher(parent=root_parent())
-        new_teacher.user = users.get_current_user()
-        new_teacher.email = (users.get_current_user()).email()
-        new_teacher.code = randint(100,999)
-        new_teacher.put()
-        self.redirect('/teacherSession')
+        #if GetTeacher(user) == None:
+            new_teacher = Teacher(parent=root_parent())
+            new_teacher.user = users.get_current_user()
+            new_teacher.email = (users.get_current_user()).email()
+            new_teacher.code = randint(100,999)
+            new_teacher.put()
+            self.redirect('/teacherSession')
+        #else:
+        #    self.redirect('/teacherSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
