@@ -1,9 +1,9 @@
 
 
 button {
-  height: 2vw;
+  height: 3vw;
   width: 12vh;
-  background-color: #ebf1ff
+  background-color: #ebf1ff;
 }
 
 
@@ -11,16 +11,14 @@ body {
   margin-top: 30vh;
   background-color: #aac6fa;
   text-align:center;
+  color: white;
   font-family: 'Montserrat', sans-serif;
-
 }
 
-div {
-  align-self: center;
-  margin-top: 30vh;
-  margin-left: 30vh;
-  margin-right: 30vh;
-  border: 15px solid green;
+#box {
+  margin-left: 3vh;
+  margin-right: 3vh;
+  border: 12px dashed white;
   padding: 50px;
 
 }
