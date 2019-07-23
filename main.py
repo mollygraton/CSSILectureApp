@@ -16,7 +16,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all dog entries.
-
     Allows for strong consistency at the cost of scalability.'''
     return ndb.Key('Parent', 'default_parent')
 
@@ -51,11 +50,6 @@ class StudentSessionPage(webapp2.RequestHandler):
             print("not the correct code!")
 
     def post(self):
-        new_question = Question(parent=root_parent())
-        new_question.question_text = self.request.get('question')
-        new_question.timestamp= time.time()
-        # redirect to '/' so that the get() version of this handler will run
-        # and show the list of dogs.
         numOf1 = self.request.get('numOf1')
         numOf2 = self.request.get('numOf2')
         numOf3 = self.request.get('numOf3')
@@ -66,12 +60,27 @@ class StudentSessionPage(webapp2.RequestHandler):
         self.response.write(template.render())
         self.redirect('/studentSession')
 
+class AddQuestion(webapp2.RequestHandler):
+    def post(self):
+        new_question = Question(parent=root_parent())
+        new_question.question_text = self.request.get('question')
+        new_question.timestamp = time.time()
+        new_question.put()
+        self.redirect('/studentSession')
+
 class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherDashboard.html')
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
+
+    def post(self):
+        new_teacher = Question(parent=root_parent())
+        new_question.question_text = self.request.get('question')
+        new_question.timestamp = time.time()
+        new_question.put()
+        self.redirect('/studentSession')
 
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
@@ -87,4 +96,5 @@ app = webapp2.WSGIApplication([
     ('/studentSession', StudentSessionPage),
     ('/teacherDashboard', TeacherDashboardPage),
     ('/teacherSession', TeacherSessionPage),
+    ('/addQuestion', AddQuestion),
 ], debug=True)
