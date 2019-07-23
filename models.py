@@ -7,7 +7,6 @@ class Student(ndb.Model):
     email = ndb.StringProperty()
     code = ndb.IntegerProperty()
     user = ndb.UserProperty() #not sure
-    number15 = ndb.IntegerProperty()
 
 class Teacher(ndb.Model):
     code = ndb.IntegerProperty()
@@ -18,3 +17,6 @@ class Question(ndb.Model):
     student_key = ndb.StringProperty()
     question_text = ndb.StringProperty()
     timestamp = ndb.FloatProperty()
+
+class Number(ndb.Model):
+    num1to5 = ndb.IntegerProperty()
