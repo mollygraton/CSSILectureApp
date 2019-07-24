@@ -5,13 +5,12 @@
     <title></title>
     <link rel = "stylesheet" href="/css/studentSession.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  
   </head>
   <body>
-    <h1>{{sCode}}</h1>
-    <center><h1 class="understandingheader">Enter your level of understanding:</h1>
+    <h1 class="understandingheader">Enter your level of understanding:</h1>
 
-    <h2>{{open_closed}}</h2>
-
+    <!-- <h2>{{open_closed}}</h2> -->
     <form method="post" action="/addNumber" >
       <select name="understanding" class="understanding">
         <option value="1">One</option>
@@ -22,14 +21,5 @@
       </select><br><br>
       <button type="submit" class="und_submit">Submit Feedback</button>
     </form>
-    <form action="/addQuestion" method="post">
-      <div>
-        <h2 class="questionheader">Enter Question:</h2>
-        <input type="text" name="question" value="" class="questionbox">
-        <br><br>
-        <button type="Submit" name="" value="Enter" class="qsubmit">Submit Question</button>
-      </div>
-    </form>
-    <button type="button" name="understandingPage" href="/feedback">Submit Feedback</button>
   </body>
 </html>

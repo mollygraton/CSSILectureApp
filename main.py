@@ -71,6 +71,15 @@ def GetCodeTeacher(student):
         # We didn't find a note, return None
         return None
 
+def GetBoolTeacher(student):
+    notes = Teacher.query(Teacher.formBool, ancestor=root_parent()).fetch()
+    if notes:
+        # We found a note, return it.
+        return True
+    else:
+        # We didn't find a note, return None
+        return False
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -134,6 +143,19 @@ class StudentSessionPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(template.render())
         self.redirect('/studentSession')
+
+class StudentFeedbackPage(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if (GetBoolTeacher(user)):
+            template = JINJA_ENVIRONMENT.get_template('templates/studentFeedback.html')
+            self.response.headers['Content-Type'] = 'text/html'
+            print "The logic is correct"
+            self.response.write(template.render())
+        else:
+            template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
+            self.response.headers['Content-Type'] = 'text/html'
+            self.response.write(template.render({"noInput": "The teacher is not allowing feedback at this time."}))
 
 class AddQuestion(webapp2.RequestHandler):
     def post(self):
@@ -257,6 +279,7 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/studentDashboard', StudentDashboardPage),
     ('/studentSession', StudentSessionPage),
+    ('/feedback', StudentFeedbackPage),
     ('/teacherDashboard', TeacherDashboardPage),
     ('/teacherSession', TeacherSessionPage),
     ('/addQuestion', AddQuestion),
