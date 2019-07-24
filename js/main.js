@@ -20,7 +20,7 @@ function fetchCurrentNote() {
       stringFun += `<input type="submit" name="" value="Delete Selected"></input>`
       note_div.innerHTML = stringFun
       // Start the timer again for the next request.
-      startTimer(5000)
+      startTimer(10000)
     })
 }
 
