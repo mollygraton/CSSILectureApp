@@ -48,10 +48,10 @@
       <div id="chart_div" class="box"></div>
       <div class="box" id="chat_div">
         <div id="txtBox">
-          <h1>Live Questions:</h1>
+          <h1 id="questionHeader">Live Questions:</h1>
           <form action="/deleteNames" method="post" id="chat_div2">
           {% for each_question in questions %}
-            <input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}">{{each_question.question_text}}</br>
+            <p id="questionText">{{each_question.question_text}}<input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}"></p></br>
           {% endfor %}
             <input type="submit" name="" value="Delete Selected"></input>
         </form>

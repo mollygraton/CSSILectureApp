@@ -45,9 +45,7 @@ animation: AnimationName 38s ease infinite;
 #box {
   margin-left: 3vh;
   margin-right: 3vh;
-  /* border: 12px dashed white; */
   padding: 50px;
-
 }
 
 .fill:hover, .fill:focus {

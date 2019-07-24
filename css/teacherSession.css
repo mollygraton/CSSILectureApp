@@ -1,6 +1,7 @@
 body {
   background-color: #aac6fa;
   font-family: 'Montserrat', sans-serif;
+
 }
 
 
@@ -26,6 +27,17 @@ body {
   margin-right: 4vw;
 }
 
+#questionheader {
+  text-align: center;
+}
+
+#questionText {
+  background-color: lightgray;
+  color:white;
+  border-radius: 200px;
+  text-align:right;
+}
+
 #chart_div {
   /* margin-left: 4vw; */
   width: 48%;
@@ -37,11 +49,14 @@ body {
 #txtBox {
   margin-left: 2vw;
   margin-top: 2vw;
+  padding:3vw;
+  height:2vw;
 }
 
 #introText {
   text-align: center;
   margin-top: 5vh;
+  color:white;
 }
 
 #openOrClose {
