@@ -103,7 +103,9 @@ class StudentSessionPage(webapp2.RequestHandler):
             print "The logic is correct"
             self.response.write(template.render())
         elif (GetStudent(user).code != GetCodeTeacher(GetStudent(user))):
-             print "You got here"
+             template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
+             self.response.headers['Content-Type'] = 'text/html'
+             self.response.write(template.render({"notCorrect": "Sorry, that's not a valid code. Try again!"}))
 
         print "THE TEACHER CODE IS: " + str(GetCodeTeacher(GetStudent(user)))
         print "THE STUDENT CODE IS: " + str(GetStudent(user).code)
