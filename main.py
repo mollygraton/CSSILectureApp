@@ -284,7 +284,7 @@ class AjaxGetQuestion(webapp2.RequestHandler):
 class AjaxGetChart(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        all_numbers = Number.query().fetch()
+        all_numbers = Student.num1to5.query().fetch()
         data = {'numbers': allToDict(all_numbers)}
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
