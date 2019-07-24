@@ -41,21 +41,21 @@
     <div id="introText">
       <h1>Welcome to your new session!</h1>
       <h2>Your class number is {{tCode}} </h2>
+      <form action="/formBool" method="post">
+        <input type="submit" name="" value="{{open_close}}" id="openOrClose"></input>
+      </form>
     </div>
-    <form action="/formBool" method="post">
-      <input type="submit" name="" value="{{open_close}}"></input>
-    </form>
       <div id="chart_div" class="box"></div>
       <div class="box" id="chat_div">
         <div id="txtBox">
-          <h1>Live Questions...:</h1>
-          <form action="/deleteNames" method="post" >
+          <h1>Live Questions:</h1>
+          <form action="/deleteNames" method="post" id="chat_div">
           {% for each_question in questions %}
             <input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}">{{each_question.question_text}}</br>
           {% endfor %}
             <input type="submit" name="" value="Delete Selected"></input>
         </form>
         </div>
-    </div>
+      </div>
   </body>
 </html>

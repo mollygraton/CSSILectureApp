@@ -34,9 +34,25 @@ body {
   margin-right: 1vw;
 }
 
+#txtBox {
+  margin-left: 2vw;
+  margin-top: 2vw;
+}
+
 #introText {
   text-align: center;
   margin-top: 5vh;
+}
+
+#openOrClose {
+  font-family:'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  color: #aac6fa;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:200px;
 }
 
 /* .box{
