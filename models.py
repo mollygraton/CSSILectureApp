@@ -15,6 +15,7 @@ class Teacher(ndb.Model):
     formProperty = ndb.BooleanProperty()
 
 class Question(ndb.Model):
+    code = ndb.IntegerProperty()
     student = ndb.StringProperty()
     question_text = ndb.StringProperty()
     timestamp = ndb.FloatProperty()
