@@ -12,12 +12,9 @@ button {
   text-decoration: none;
 }
 
-
 body {
   font-size: 4vh;
-  margin-top: 30vh;
   background-image: linear-gradient(to right, #1629a1, #65b3e0, #a6bde0);
-  /* background-color: #aac6fa; */
   text-align:center;
   color: white;
   font-family: 'Montserrat', sans-serif;
