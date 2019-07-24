@@ -2,9 +2,6 @@ a {
   color: white;
 }
 
-#appName {
-  color:#87aef7;
-}
 
 button {
   height: 4vw;
@@ -31,18 +28,11 @@ button {
 }
 body {
 
-  /* background: linear-gradient(139deg, #62b3cf, #085b7e, #000000);
-  background-size: 600% 600%;
-
-  -webkit-animation: AnimationName 34s ease infinite;
-  animation: AnimationName 34s ease infinite;
-  45bfcc*/
-
-background: linear-gradient(116deg, #5fa4d3, #131d36, #226092);
+background: linear-gradient(116deg, #8a96f9, #131d36, #226092);
 background-size: 600% 600%;
 
--webkit-animation: AnimationName 35s ease infinite;
-animation: AnimationName 35s ease infinite;
+-webkit-animation: AnimationName 38s ease infinite;
+animation: AnimationName 38s ease infinite;
 
 
   font-size: 4vh;
@@ -55,7 +45,7 @@ animation: AnimationName 35s ease infinite;
 #box {
   margin-left: 3vh;
   margin-right: 3vh;
-  border: 12px dashed white;
+  /* border: 12px dashed white; */
   padding: 50px;
 
 }
@@ -123,4 +113,37 @@ h1 {
 code {
   color: #e4cb58;
   font: inherit;
+}
+
+
+#title{
+
+    font-weight: 400;
+    font-size: 10vh;
+    -webkit-animation: color-change 10s infinite;
+    -o-animation: color-change 1s infinite;
+    -ms-animation: color-change 1s infinite;
+    animation: color-change 10s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #bfe1fd; }
+    50% { color: #d2dde6; }
+    100% { color: #fbdfff; }
+}
+
+@-ms-keyframes color-change {
+  0% { color: #bfe1fd; }
+  50% { color: #d2dde6; }
+  100% { color: #fbdfff; }
+}
+@-o-keyframes color-change {
+  0% { color: #bfe1fd; }
+  50% { color: #d2dde6; }
+  100% { color: #fbdfff; }
+}
+@keyframes color-change {
+  0% { color: #bfe1fd; }
+  50% { color: #d2dde6; }
+  100% { color: #fbdfff; }
 }

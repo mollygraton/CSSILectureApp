@@ -1,9 +1,19 @@
 body {
   background-color: #aac6fa;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font: 300 1em "Fira Sans", sans-serif;
   color: white;
-  font-size: 6vh;
+  font-size: 5vh;
+  font-weight: 500;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #aac6fa;
 }
 
 h1 {
@@ -22,5 +32,6 @@ h1 {
   width:40vw;
   font-size:35px;
   text-align:center;
-  font-family: 'Montserrat', sans-serif;
+  font: "Fira Sans", sans-serif;
+  }
 }
