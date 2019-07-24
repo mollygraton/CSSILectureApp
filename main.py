@@ -14,7 +14,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-###TO DO : TeacherSession HTML and Python for OpenForm/CloseForm ADD to Teacher model?
+###TO DO : Button to Identify the Student which asked the question
  ############################################################################
 def root_parent():
     '''A single key to be used as the ancestor for all entries.
