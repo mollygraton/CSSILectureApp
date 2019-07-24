@@ -43,10 +43,10 @@ def GetTeacher(user):
 
 def GetUserInput(user):
     '''Queries datastore to get the current value of the note associated with this user.'''
-    notes = UserNote.query(UserNote.user == user, ancestor=root_parent()).fetch()
+    notes = Question.query(Question.student == GetStudent(user), ancestor=root_parent()).fetch()
     if len(notes) > 0:
         # We found a note, return it.
-        return notes[0]
+        return notes
     else:
         # We didn't find a note, return None
         return None
