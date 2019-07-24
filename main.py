@@ -8,7 +8,7 @@ from random import randint
 import json
 from google.appengine.ext import ndb
 
-from models import Student, Teacher, Question, Number
+from models import Student, Teacher, Question
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -155,9 +155,9 @@ class AddQuestion(webapp2.RequestHandler):
 class AddNumber(webapp2.RequestHandler):
     def post(self):
         if GetTeacherFromStudent(GetStudent(users.get_current_user())).formProperty == True:
-            new_number = Number(parent=root_parent())
-            new_number.num1to5 = int(self.request.get('understanding'))
-            new_number.put()
+            currentStudent = GetStudent(users.get_current_user())
+            currentStudent.num1to5 = int(self.request.get('understanding'))
+            currentStudent.put()
             self.redirect('/studentSession')
         else:
             self.redirect('/studentSession')
@@ -187,11 +187,11 @@ class TeacherDashboardPage(webapp2.RequestHandler):
 class TeacherSessionPage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        number1 = Number.query(Number.num1to5 == 1).fetch()
-        number2 = Number.query(Number.num1to5 == 2).fetch()
-        number3 = Number.query(Number.num1to5 == 3).fetch()
-        number4 = Number.query(Number.num1to5 == 4).fetch()
-        number5 = Number.query(Number.num1to5 == 5).fetch()
+        number1 = Student.query(Student.code == GetTeacher(user).code, Student.num1to5 == 1).fetch()
+        number2 = Student.query(Student.code == GetTeacher(user).code, Student.num1to5 == 2).fetch()
+        number3 = Student.query(Student.code == GetTeacher(user).code, Student.num1to5 == 3).fetch()
+        number4 = Student.query(Student.code == GetTeacher(user).code, Student.num1to5 == 4).fetch()
+        number5 = Student.query(Student.code == GetTeacher(user).code, Student.num1to5 == 5).fetch()
         questions = Question.query(Question.code == GetTeacher(user).code, ancestor=root_parent()).fetch()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
@@ -227,21 +227,21 @@ class FormBool(webapp2.RequestHandler):
             currentTeacher = GetTeacher(users.get_current_user())
             currentTeacher.formProperty = False
             currentTeacher.put()
-            #Delete the fist of five from datastore
-            to_delete = Number.query(ancestor=root_parent()).fetch()
+            #Clears Fist of five
+            to_delete = Student.query(Student.code == GetTeacher(users.get_current_user()).code, ancestor=root_parent()).fetch()
             for entry in to_delete:
-                key = ndb.Key(urlsafe=entry.key.urlsafe())
-                key.delete()
+                entry.num1to5 = None
+                entry.put()
             self.redirect('/teacherSession')
         else:
             currentTeacher = GetTeacher(users.get_current_user())
             currentTeacher.formProperty = True
             currentTeacher.put()
             #Delete the fist of five from datastore
-            to_delete = Number.query(ancestor=root_parent()).fetch()
+            to_delete = Student.query(Student.code == GetTeacher(users.get_current_user()).code, ancestor=root_parent()).fetch()
             for entry in to_delete:
-                key = ndb.Key(urlsafe=entry.key.urlsafe())
-                key.delete()
+                entry.num1to5 = None
+                entry.put()
             self.redirect('/teacherSession')
 
 def toDictQ(question):
