@@ -1,4 +1,10 @@
+a {
+  color: white;
+}
 
+#appName {
+  color:#87aef7;
+}
 
 button {
   height: 4vw;
