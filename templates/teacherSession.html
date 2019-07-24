@@ -35,9 +35,10 @@
   </head>
 
   <body>
-    <!--Div that will hold the pie chart-->
-    <h1>Welcome to your new session!</h1>
-    <h2>Your class number is {{tCode}} </h2>
+    <div id="introText">
+      <h1>Welcome to your new session!</h1>
+      <h2>Your class number is {{tCode}} </h2>
+    </div>
     <form action="/formBool" method="post">
       <input type="submit" name="" value="{{open_close}}"></input>
     </form>

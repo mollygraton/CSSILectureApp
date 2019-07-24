@@ -34,6 +34,11 @@ body {
   margin-right: 1vw;
 }
 
+#introText {
+  text-align: center;
+  margin-top: 5vh;
+}
+
 /* .box{
 
 }
