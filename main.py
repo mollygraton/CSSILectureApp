@@ -2,10 +2,11 @@ import webapp2
 import jinja2
 import os
 import time;
+from google.appengine.api import users
 from random import randint
+
 import json
 from google.appengine.ext import ndb
-from google.appengine.api import users
 
 from models import Student, Teacher, Question, Number
 

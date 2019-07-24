@@ -1,4 +1,4 @@
-const current_chat = document.querySelector('#chat')
+const current_chat = document.querySelector('#chat_div')
 
 function startTimer() {
   const microseconds = 2000  // 2 seconds
@@ -20,7 +20,7 @@ function fetchCurrentChat() {
     })
 }
 
-//if (current_chat != null) {
+if (chat_div != null) {
   // If note_div is null it means that the user is not logged in.  This is
   // because the jinja template for the '/' handler only renders this div
   // when the user is logged in.  Querying for a node that does not exist
@@ -28,4 +28,4 @@ function fetchCurrentChat() {
 
   // Start by fetching the current note without any delay.
   fetchCurrentChat()
-//}
+}
