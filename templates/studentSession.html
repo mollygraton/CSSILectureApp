@@ -8,19 +8,7 @@
   </head>
   <body>
     <h1>{{sCode}}</h1>
-    <center><h1 class="understandingheader">Enter your level of understanding:</h1>
-
-    <!-- <h2>{{open_closed}}</h2> -->
-    <form method="post" action="/addNumber" >
-      <select name="understanding" class="understanding">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        <option value="4">Four</option>
-        <option value="5">Five</option>
-      </select><br><br>
-      <button type="submit" class="und_submit">Submit Feedback</button>
-    </form>
+    <center>
     <form action="/addQuestion" method="post">
       <div>
         <h2 class="questionheader">Enter Question:</h2>
@@ -29,5 +17,6 @@
         <button type="Submit" name="" value="Enter" class="qsubmit">Submit Question</button>
       </div>
     </form>
+    <button type="button" name="understandingPage" href="/feedback">Submit Feedback</button>
   </body>
 </html>
