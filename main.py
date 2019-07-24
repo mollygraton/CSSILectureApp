@@ -165,7 +165,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         data = {
-            "open_close" : GetTeacher(users.get_current_user()).formProperty,
+            "open_close" : "Open",
             "tCode": int(GetTeacher(user).code),
             "numOf1": len(number1),
             "numOf2": len(number2),
@@ -174,6 +174,11 @@ class TeacherSessionPage(webapp2.RequestHandler):
             "numOf5": len(number5),
             "questions": questions
         }
+        if GetTeacher(users.get_current_user()).formProperty == True:
+            data["open_close"] = "Open"
+        else:
+            data["open_close"] = "Closed"
+
         print(data)
         self.response.write(template.render(data))
 
