@@ -8,7 +8,7 @@ from random import randint
 import json
 from google.appengine.ext import ndb
 
-from models import Student, Teacher, Question, Number
+from models import Student, Teacher, Question
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
