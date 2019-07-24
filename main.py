@@ -238,10 +238,10 @@ class FormBool(webapp2.RequestHandler):
             currentTeacher.formProperty = True
             currentTeacher.put()
             #Delete the fist of five from datastore
-            to_delete = Number.query(ancestor=root_parent()).fetch()
+            to_delete = Student.query(Student.code == GetTeacher(users.get_current_user()).code, ancestor=root_parent()).fetch()
             for entry in to_delete:
-                key = ndb.Key(urlsafe=entry.key.urlsafe())
-                key.delete()
+                entry.num1to5 = None
+                entry.put()
             self.redirect('/teacherSession')
 
 def toDict(question):
