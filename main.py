@@ -104,7 +104,9 @@ class StudentSessionPage(webapp2.RequestHandler):
             print "The logic is correct"
             self.response.write(template.render())
         elif (GetStudent(user).code != GetCodeTeacher(GetStudent(user))):
-             print "You got here"
+             template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
+             self.response.headers['Content-Type'] = 'text/html'
+             self.response.write(template.render({"notCorrect": "Sorry, that's not a valid code. Try again!"}))
 
         print "THE TEACHER CODE IS: " + str(GetCodeTeacher(GetStudent(user)))
         print "THE STUDENT CODE IS: " + str(GetStudent(user).code)
@@ -164,6 +166,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         data = {
+            "open_close" : "Open",
             "tCode": int(GetTeacher(user).code),
             "numOf1": len(number1),
             "numOf2": len(number2),
@@ -172,6 +175,11 @@ class TeacherSessionPage(webapp2.RequestHandler):
             "numOf5": len(number5),
             "questions": questions
         }
+        if GetTeacher(users.get_current_user()).formProperty == True:
+            data["open_close"] = "Open"
+        else:
+            data["open_close"] = "Closed"
+
         print(data)
         self.response.write(template.render(data))
 
@@ -183,11 +191,18 @@ class DeleteNames(webapp2.RequestHandler):
             key.delete()
         self.redirect('/teacherSession')
 
-class OpenForm(webapp2.RequestHandler):
+class FormBool(webapp2.RequestHandler):
     def post(self):
-        open_close
-
-        self.redirect('/teacherSession')
+        if GetTeacher(users.get_current_user()).formProperty == True:
+            currentTeacher = GetTeacher(users.get_current_user())
+            currentTeacher.formProperty = False
+            currentTeacher.put()
+            self.redirect('/teacherSession')
+        else:
+            currentTeacher = GetTeacher(users.get_current_user())
+            currentTeacher.formProperty = True
+            currentTeacher.put()
+            self.redirect('/teacherSession')
 
 class AjaxGetCurrentChat(webapp2.RequestHandler):
     def get(self):
@@ -219,6 +234,6 @@ app = webapp2.WSGIApplication([
     ('/addNumber', AddNumber),
     ('/ajax/get_current_chat',AjaxGetCurrentChat),
     ('/deleteNames', DeleteNames),
-    ('/openForm', OpenForm),
+    ('/formBool', FormBool),
 
 ], debug=True)

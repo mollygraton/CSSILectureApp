@@ -11,7 +11,8 @@ class Student(ndb.Model):
 class Teacher(ndb.Model):
     code = ndb.IntegerProperty()
     email = ndb.StringProperty()
-    user = ndb.UserProperty() #not sure
+    user = ndb.UserProperty()
+    formProperty = ndb.BooleanProperty()
 
 class Question(ndb.Model):
     student = ndb.StringProperty()
