@@ -12,9 +12,28 @@ button {
   text-decoration: none;
 }
 
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 31%}
+    50%{background-position:100% 70%}
+    100%{background-position:0% 31%}
+}
 body {
+
+  background: linear-gradient(139deg, #62b3cf, #085b7e, #000000);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 28s ease infinite;
+  animation: AnimationName 28s ease infinite;
+
+
   font-size: 4vh;
-  background-image: linear-gradient(to right, #1629a1, #65b3e0, #a6bde0);
+  /* background-image: linear-gradient(to right, #1629a1, #65b3e0, #a6bde0); */
   text-align:center;
   color: white;
   font-family: 'Montserrat', sans-serif;
@@ -36,6 +55,7 @@ body {
   animation: pulse 1s;
   box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
 }
+
 @-webkit-keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 var(--hover);
