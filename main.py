@@ -219,11 +219,21 @@ class FormBool(webapp2.RequestHandler):
             currentTeacher = GetTeacher(users.get_current_user())
             currentTeacher.formProperty = False
             currentTeacher.put()
+            #Delete the fist of five from datastore
+            to_delete = Number.query(ancestor=root_parent()).fetch()
+            for entry in to_delete:
+                key = ndb.Key(urlsafe=entry.key.urlsafe())
+                key.delete()
             self.redirect('/teacherSession')
         else:
             currentTeacher = GetTeacher(users.get_current_user())
             currentTeacher.formProperty = True
             currentTeacher.put()
+            #Delete the fist of five from datastore
+            to_delete = Number.query(ancestor=root_parent()).fetch()
+            for entry in to_delete:
+                key = ndb.Key(urlsafe=entry.key.urlsafe())
+                key.delete()
             self.redirect('/teacherSession')
 
 class AjaxGetCurrentChat(webapp2.RequestHandler):

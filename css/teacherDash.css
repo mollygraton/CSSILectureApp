@@ -5,8 +5,16 @@ body {
 
 }
 
+#tInfo {
+  margin-top: 6vw;
+  margin-left: 20vh;
+  margin-right: 20vh;
+  font-weight: bold;
+  font-size: 15px;
+}
+
 button {
-    margin-top: 20vh;
+    margin-top: 30vh;
     height: 6vw;
     width: 36vh;
     background-color: #ebf1ff;

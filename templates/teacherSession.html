@@ -49,7 +49,7 @@
       <div class="box" id="chat_div">
         <div id="txtBox">
           <h1>Live Questions:</h1>
-          <form action="/deleteNames" method="post" id="chat_div">
+          <form action="/deleteNames" method="post" id="chat_div2">
           {% for each_question in questions %}
             <input type="checkbox" name="to_delete" value="{{each_question.key.urlsafe()}}">{{each_question.question_text}}</br>
           {% endfor %}
