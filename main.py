@@ -147,6 +147,7 @@ class StudentSessionPage(webapp2.RequestHandler):
 class AddQuestion(webapp2.RequestHandler):
     def post(self):
         new_question = Question(parent=root_parent())
+        new_question.code = GetStudent(users.get_current_user()).code
         new_question.question_text = self.request.get('question')
         new_question.timestamp = time.time()
         new_question.student = (GetStudent(users.get_current_user())).key.urlsafe()
@@ -193,7 +194,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         number3 = Number.query(Number.num1to5 == 3).fetch()
         number4 = Number.query(Number.num1to5 == 4).fetch()
         number5 = Number.query(Number.num1to5 == 5).fetch()
-        questions = Question.query().fetch()
+        questions = Question.query(Question.code == GetTeacher(user).code, ancestor=root_parent()).fetch()
         template = JINJA_ENVIRONMENT.get_template('templates/teacherSession.html')
         self.response.headers['Content-Type'] = 'text/html'
         data = {
