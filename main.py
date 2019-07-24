@@ -108,8 +108,6 @@ class StudentSessionPage(webapp2.RequestHandler):
              self.response.headers['Content-Type'] = 'text/html'
              self.response.write(template.render({"notCorrect": "Sorry, that's not a valid code. Try again!"}))
 
-        print "THE TEACHER CODE IS: " + str(GetCodeTeacher(GetStudent(user)))
-        print "THE STUDENT CODE IS: " + str(GetStudent(user).code)
     def post(self):
         template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
         self.response.headers['Content-Type'] = 'text/html'
