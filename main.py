@@ -244,7 +244,7 @@ class FormBool(webapp2.RequestHandler):
                 entry.put()
             self.redirect('/teacherSession')
 
-def toDict(question):
+def toDictQ(question):
     return {
         "student": question.student,
         "question_text": question.question_text,
@@ -252,10 +252,24 @@ def toDict(question):
         "key": question.key.urlsafe()
     }
 
-def allToDict(questions):
+def toDictC(number):
+    return {
+        "student": question.student,
+        "question_text": question.question_text,
+        "timestamp": question.timestamp,
+        "key": question.key.urlsafe()
+    }
+
+def allToDictQ(objects):
     out=[]
-    for question in questions:
-        out.append(toDict(question))
+    for object in objects:
+        out.append(toDict(object))
+    return out;
+
+def allToDictC(objects):
+    out=[]
+    for object in objects:
+        out.append(toDict(object))
     return out;
 
 
@@ -266,6 +280,15 @@ class AjaxGetQuestion(webapp2.RequestHandler):
         data = {'question': allToDict(all_questions)}
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
+
+class AjaxGetChart(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        all_numbers = Student.num1to5.query().fetch()
+        data = {'numbers': allToDict(all_numbers)}
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.write(json.dumps(data))
+
 #class
 # The app config
 app = webapp2.WSGIApplication([
@@ -277,6 +300,7 @@ app = webapp2.WSGIApplication([
     ('/addQuestion', AddQuestion),
     ('/addNumber', AddNumber),
     ('/ajax/get_current_chat',AjaxGetQuestion),
+    ('/ajax/get_current_chart',AjaxGetChart),
     ('/deleteNames', DeleteNames),
     ('/formBool', FormBool),
 
