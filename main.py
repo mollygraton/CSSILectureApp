@@ -168,10 +168,13 @@ class AddQuestion(webapp2.RequestHandler):
 
 class AddNumber(webapp2.RequestHandler):
     def post(self):
-        new_number = Number(parent=root_parent())
-        new_number.num1to5 = int(self.request.get('understanding'))
-        new_number.put()
-        self.redirect('/studentSession')
+        if GetTeacherFromStudent(GetStudent(users.get_current_user())).formProperty == True:
+            new_number = Number(parent=root_parent())
+            new_number.num1to5 = int(self.request.get('understanding'))
+            new_number.put()
+            self.redirect('/studentSession')
+        else:
+            self.redirect('/studentSession')
 
 class TeacherDashboardPage(webapp2.RequestHandler):
     def get(self):
