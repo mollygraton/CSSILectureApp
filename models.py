@@ -6,7 +6,8 @@ from google.appengine.api import users
 class Student(ndb.Model):
     email = ndb.StringProperty()
     code = ndb.IntegerProperty()
-    user = ndb.UserProperty() #not sure
+    user = ndb.UserProperty()
+    num1to5 = ndb.IntegerProperty()
 
 class Teacher(ndb.Model):
     code = ndb.IntegerProperty()
@@ -19,6 +20,3 @@ class Question(ndb.Model):
     student = ndb.StringProperty()
     question_text = ndb.StringProperty()
     timestamp = ndb.FloatProperty()
-
-class Number(ndb.Model):
-    num1to5 = ndb.IntegerProperty()
