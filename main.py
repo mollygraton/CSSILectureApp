@@ -51,6 +51,16 @@ def GetUserInput(user):
         # We didn't find a note, return None
         return None
 
+def GetTeacherFromStudent(student):
+    '''Queries datastore to get the current value of the note associated with this user.'''
+    notes = Teacher.query(Teacher.code == student.code, ancestor=root_parent()).fetch()
+    if len(notes) > 0:
+        # We found a note, return it.
+        return notes[0]
+    else:
+        # We didn't find a note, return None
+        return None
+
 def GetCodeTeacher(student):
     '''Queries datastore to get the current value of the note associated with this user.'''
     notes = Teacher.query(Teacher.code == student.code, ancestor=root_parent()).fetch()
@@ -102,7 +112,16 @@ class StudentSessionPage(webapp2.RequestHandler):
             template = JINJA_ENVIRONMENT.get_template('templates/studentSession.html')
             self.response.headers['Content-Type'] = 'text/html'
             print "The logic is correct"
-            self.response.write(template.render())
+            # Open Close visual for StudentSession html
+            data = {
+            "open_closed" : "Open"
+            }
+            if GetTeacherFromStudent(GetStudent(user)).formProperty == True:
+                data["open_closed"] = "Open"
+            else:
+                data["open_closed"] = "Closed"
+
+            self.response.write(template.render(data))
         elif (GetStudent(user).code != GetCodeTeacher(GetStudent(user))):
              template = JINJA_ENVIRONMENT.get_template('templates/studentDashboard.html')
              self.response.headers['Content-Type'] = 'text/html'
