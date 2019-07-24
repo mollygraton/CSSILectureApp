@@ -245,22 +245,26 @@ class FormBool(webapp2.RequestHandler):
                 key.delete()
             self.redirect('/teacherSession')
 
-class AjaxGetCurrentChat(webapp2.RequestHandler):
+def toDict(question):
+    return {
+        "student": question.student,
+        "question_text": question.question_text,
+        "timestamp": question.timestamp,
+        "key": question.key.urlsafe()
+    }
+
+def allToDict(questions):
+    out=[]
+    for question in questions:
+        out.append(toDict(question))
+    return out;
+
+
+class AjaxGetQuestion(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        student = GetStudent(user)
-        if student is None:
-            # No user is logged in, so don't return any value.
-            self.response.status = 401
-            return
-        chat = GetChats(student)
-        all_chat = []
-        if chat is not None:
-            # If there was a current note, update note.
-            all_chat.append(chat)
-        # build a dictionary that contains the data that we want to return.
-        data = {'chat': all_chat}
-        # Note the different content type.
+        all_questions = Question.query().fetch()
+        data = {'question': allToDict(all_questions)}
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
 #class
@@ -273,7 +277,7 @@ app = webapp2.WSGIApplication([
     ('/teacherSession', TeacherSessionPage),
     ('/addQuestion', AddQuestion),
     ('/addNumber', AddNumber),
-    ('/ajax/get_current_chat',AjaxGetCurrentChat),
+    ('/ajax/get_current_chat',AjaxGetQuestion),
     ('/deleteNames', DeleteNames),
     ('/formBool', FormBool),
 
