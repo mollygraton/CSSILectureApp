@@ -199,12 +199,6 @@ class TeacherSessionPage(webapp2.RequestHandler):
         data = {
             "open_close" : "Open",
             "tCode": int(GetTeacher(user).code),
-            "numOf1": len(number1),
-            "numOf2": len(number2),
-            "numOf3": len(number3),
-            "numOf4": len(number4),
-            "numOf5": len(number5),
-            "questions": questions
         }
         if GetTeacher(users.get_current_user()).formProperty == True:
             data["open_close"] = "Open"

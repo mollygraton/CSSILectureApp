@@ -64,14 +64,24 @@ function drawChart(myJson) {
   }
 
   data.addRows([
-    ['1', total1],
-    ['2', total2],
-    ['3', total3],
+    ['(Got it!) 5', total5],
     ['4', total4],
-    ['5', total5]
+    ['3', total3],
+    ['2', total2],
+    ['(I\'m Lost) 1', total1]
   ]);
   console.log(myJson);
-  var options = {'title':'General Class Comprehension'};
+  var options = {
+    'title':'General Class Comprehension',
+    chartArea: {width: '50%'},
+    hAxis: {
+          title: 'Number of Students',
+          minValue: 0
+        },
+    vAxis: {
+          title: 'Comprehension'
+        },
+  };
   var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
   chart.draw(data, options);
 }
