@@ -76,7 +76,8 @@ function drawChart(myJson) {
     chartArea: {width: '50%'},
     hAxis: {
           title: 'Number of Students',
-          minValue: 0
+          minValue: 0,
+          maxValue: 15
         },
     vAxis: {
           title: 'Comprehension'

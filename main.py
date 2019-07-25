@@ -197,7 +197,7 @@ class TeacherSessionPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         data = {
             "open_close" : "Open",
-            "tCode": int(GetTeacher(user).code),
+            "tCode": int(GetTeacher(user).code)
         }
         if GetTeacher(users.get_current_user()).formProperty == True:
             data["open_close"] = "Open"
