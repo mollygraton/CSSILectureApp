@@ -104,6 +104,7 @@ class StudentDashboardPage(webapp2.RequestHandler):
             new_student.user = users.get_current_user()
             new_student.code = int(self.request.get("code"))
             new_student.email = (users.get_current_user()).email()
+            new_student.num1to5 = 0
             new_student.put()
             self.redirect('/studentSession')
         else :
@@ -230,7 +231,7 @@ class FormBool(webapp2.RequestHandler):
             #Clears Fist of five
             to_delete = Student.query(Student.code == GetTeacher(users.get_current_user()).code, ancestor=root_parent()).fetch()
             for entry in to_delete:
-                entry.num1to5 = None
+                entry.num1to5 = 0
                 entry.put()
             self.redirect('/teacherSession')
         else:
@@ -240,7 +241,7 @@ class FormBool(webapp2.RequestHandler):
             #Delete the fist of five from datastore
             to_delete = Student.query(Student.code == GetTeacher(users.get_current_user()).code, ancestor=root_parent()).fetch()
             for entry in to_delete:
-                entry.num1to5 = None
+                entry.num1to5 = 0
                 entry.put()
             self.redirect('/teacherSession')
 
