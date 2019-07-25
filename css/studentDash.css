@@ -18,13 +18,24 @@ body {
 
 h1 {
   margin-top: 30vh;
+  background: linear-gradient(0deg, lightgray, white,white,lightgray);
+  font-weight:bolder;
+
 }
 
 
 
+.text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-color:#aac6fa;
+
+}
+
 #sessionCode {
   height: 15vh;
-  width: 30vh;
+  width: 30vw;
   font-size:4vh;
   text-align: center;
 }
