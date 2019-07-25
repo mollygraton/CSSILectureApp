@@ -246,7 +246,7 @@ class FormBool(webapp2.RequestHandler):
 
 def toDictQ(question):
     return {
-        "student": question.student,
+        "studentemail": ndb.Key(urlsafe=question.student).get().email,
         "question_text": question.question_text,
         "timestamp": question.timestamp,
         "key": question.key.urlsafe()
@@ -254,6 +254,8 @@ def toDictQ(question):
 
 def toDictC(student):
     return {
+        "key": student.key.urlsafe(),
+        "email": student.email,
         "num1to5": student.num1to5
     }
 

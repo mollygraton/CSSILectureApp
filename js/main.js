@@ -1,7 +1,11 @@
 const note_div = document.querySelector('#chat_div2')
 
-function startTimer(timeoutPeriod) {
+function startDivTimer(timeoutPeriod) {
   setTimeout(fetchCurrentNote, timeoutPeriod)
+}
+
+function startChartTimer(timeoutPeriod) {
+  setTimeout(fetchCurrentChart, timeoutPeriod)
 }
 
 // Ask the server for the current note immediately.
@@ -15,7 +19,8 @@ function fetchCurrentNote() {
       var stringFun = ""
       note_div.innerHTML = ""
       for(x=0;x<myJson.question.length;x++){
-        stringFun += `<input type="checkbox" name="to_delete" value="${myJson.question[x].key}">${myJson.question[x].question_text}</br>`
+        currStudentEmail = myJson.question[x].studentemail
+        stringFun += `<input type="checkbox" name="to_delete" value="${myJson.question[x].key}"><a href='#' onclick=alert(\"${currStudentEmail}\"+\"&nbsp\"+\"asked\"+\"&nbsp\"+\"this\"+\"&nbsp\"+\"question.\")>${myJson.question[x].question_text}</a></br>`
       }
       stringFun += `<input type="submit" name="" value="Delete Selected"></input>`
       note_div.innerHTML = stringFun
@@ -23,7 +28,7 @@ function fetchCurrentNote() {
       //update the chart
 
       // Start the timer again for the next request.
-      startTimer(7000)
+      startDivTimer(7000)
     })
 }
 
@@ -53,7 +58,7 @@ function drawChart(myJson) {
     else if (num_data == 4) {
       total4++;
     }
-    else{
+    else if (num_data == 5){
       total5++;
     }
   }
@@ -83,7 +88,7 @@ function fetchCurrentChart() {
       google.charts.setOnLoadCallback(function(){ drawChart(myJson) });
 
       // Start the timer again for the next request.
-      startTimer(1000)
+      startChartTimer(1000)
     })
 }
 if (note_div != null) {
