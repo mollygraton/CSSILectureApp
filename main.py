@@ -252,24 +252,21 @@ def toDictQ(question):
         "key": question.key.urlsafe()
     }
 
-def toDictC(number):
+def toDictC(student):
     return {
-        "student": question.student,
-        "question_text": question.question_text,
-        "timestamp": question.timestamp,
-        "key": question.key.urlsafe()
+        "num1to5": student.num1to5
     }
 
 def allToDictQ(objects):
     out=[]
     for object in objects:
-        out.append(toDict(object))
+        out.append(toDictQ(object))
     return out;
 
 def allToDictC(objects):
     out=[]
     for object in objects:
-        out.append(toDict(object))
+        out.append(toDictC(object))
     return out;
 
 
@@ -277,15 +274,16 @@ class AjaxGetQuestion(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         all_questions = Question.query().fetch()
-        data = {'question': allToDict(all_questions)}
+        data = {'question': allToDictQ(all_questions)}
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
 
 class AjaxGetChart(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        all_numbers = Student.num1to5.query().fetch()
-        data = {'numbers': allToDict(all_numbers)}
+        all_students = Student.query().fetch()
+        data = {'numbers': allToDictC(all_students)}
+        print(data)
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
 
