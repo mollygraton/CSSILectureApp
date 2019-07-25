@@ -283,7 +283,7 @@ class AjaxGetQuestion(webapp2.RequestHandler):
 class AjaxGetChart(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        all_students = Student.query().fetch()
+        all_students = Student.query(Student.code == GetTeacher(user).code, ancestor=root_parent()).fetch()
         data = {'numbers': allToDictC(all_students)}
         print(data)
         self.response.headers['Content-Type'] = 'application/json'
