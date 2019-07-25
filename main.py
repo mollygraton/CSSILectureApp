@@ -275,7 +275,7 @@ def allToDictC(objects):
 class AjaxGetQuestion(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        all_questions = Question.query().fetch()
+        all_questions = Question.query(Question.code == GetTeacher(user).code, ancestor=root_parent()).fetch()
         data = {'question': allToDictQ(all_questions)}
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(data))
