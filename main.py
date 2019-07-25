@@ -266,6 +266,7 @@ def allToDictQ(objects):
 def allToDictC(objects):
     out=[]
     for object in objects:
+        print(object)
         out.append(toDictC(object))
     return out;
 

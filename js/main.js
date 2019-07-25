@@ -29,8 +29,47 @@ function fetchCurrentNote() {
 
 
 
+function drawChart(myJson) {
+  console.log(myJson)
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Understanding');
+  data.addColumn('number', 'Students');
+  var total1 = 0
+  var total2 = 0
+  var total3 = 0
+  var total4 = 0
+  var total5 = 0
+  for(x=0;x<myJson.numbers.length;x++){
+    var num_data = myJson.numbers[x].num1to5
+    if (num_data == 1){
+      total1++;
+    }
+    else if (num_data == 2) {
+      total2++;
+    }
+    else if (num_data == 3) {
+      total3++;
+    }
+    else if (num_data == 4) {
+      total4++;
+    }
+    else{
+      total5++;
+    }
+  }
 
-
+  data.addRows([
+    ['1', total1],
+    ['2', total2],
+    ['3', total3],
+    ['4', total4],
+    ['5', total5]
+  ]);
+  console.log(myJson);
+  var options = {'title':'General Class Comprehension'};
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
 
 
 
@@ -41,28 +80,7 @@ function fetchCurrentChart() {
     })
     .then(function (myJson) {
       google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Understanding');
-      data.addColumn('number', 'Students');
-      total1 = myJson.student[x].key
-      total2 = ?{numOf2}
-      total3 = ?{numOf3}
-      total4 = ?{numOf4}
-      total5 = ?{numOf5}
-      data.addRows([
-        ['1', total1],
-        ['2', total2],
-        ['3', total3],
-        ['4', total4],
-        ['5', total5]
-      ]);
-      console.log(myJson);
-      // var options = {'title':'General Class Comprehension'};
-      // var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-      // chart.draw(data, options);
-
-      //update the chart
+      google.charts.setOnLoadCallback(function(){ drawChart(myJson) });
 
       // Start the timer again for the next request.
       startTimer(10000)
