@@ -152,7 +152,6 @@ class AddQuestion(webapp2.RequestHandler):
         new_question.student = (GetStudent(users.get_current_user())).key.urlsafe()
         new_question.put()
         self.redirect('/studentSession')
-
 class AddNumber(webapp2.RequestHandler):
     def post(self):
         if GetTeacherFromStudent(GetStudent(users.get_current_user())).formProperty == True:
