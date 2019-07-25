@@ -53,7 +53,7 @@ function drawChart(myJson) {
     else if (num_data == 4) {
       total4++;
     }
-    else{
+    else if (num_data == 5){
       total5++;
     }
   }
