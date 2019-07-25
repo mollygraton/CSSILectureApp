@@ -23,7 +23,7 @@ function fetchCurrentNote() {
       //update the chart
 
       // Start the timer again for the next request.
-      startTimer(10000)
+      startTimer(7000)
     })
 }
 
@@ -83,7 +83,7 @@ function fetchCurrentChart() {
       google.charts.setOnLoadCallback(function(){ drawChart(myJson) });
 
       // Start the timer again for the next request.
-      startTimer(10000)
+      startTimer(1000)
     })
 }
 if (note_div != null) {
