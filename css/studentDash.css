@@ -16,25 +16,37 @@ body {
   color: #aac6fa;
 }
 
+@-webkit-keyframes color-change {
+    0% { color: white; }
+    50% { color: #cce6ff; }
+    100% { color: white; }
+}
+
+@-ms-keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
+@-o-keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
+@keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
 
 h1 {
   margin-top: 30vh;
-  background: linear-gradient(116deg, red, white,blue,lightgray);
-  -webkit-animation: AnimationName 38s ease infinite;
-  animation: AnimationName 38s ease infinite;
   font-weight:bolder;
+  -webkit-animation: color-change 10s infinite;
+  -o-animation: color-change 1s infinite;
+  -ms-animation: color-change 1s infinite;
+  animation: color-change 10s infinite;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 28%}
-    50%{background-position:100% 73%}
-    100%{background-position:0% 28%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 28%}
-    50%{background-position:100% 73%}
-    100%{background-position:0% 28%}
-}
 
 .text {
   background-clip: text;
