@@ -19,7 +19,8 @@ function fetchCurrentNote() {
       var stringFun = ""
       note_div.innerHTML = ""
       for(x=0;x<myJson.question.length;x++){
-        stringFun += `<input type="checkbox" name="to_delete" value="${myJson.question[x].key}">${myJson.question[x].question_text}</br>`
+        currStudentEmail = myJson.question[x].studentemail
+        stringFun += `<input type="checkbox" name="to_delete" value="${myJson.question[x].key}"><a href='#' onclick=alert(\"${currStudentEmail}\")>${myJson.question[x].question_text}</a></br>`
       }
       stringFun += `<input type="submit" name="" value="Delete Selected"></input>`
       note_div.innerHTML = stringFun
