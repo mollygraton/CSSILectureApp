@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel = "stylesheet" href="/css/teacherSession.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <Title>LMK Session</Title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    </script>
+  </head>
+
+  <body>
+    <div id="introText">
+      <h1>Welcome to your new session!</h1>
+      <h2>Your class number is {{tCode}} </h2>
+      <form action="/formBool" method="post">
+        <input type="submit" name="" value="{{open_close}}" id="openOrClose"></input>
+      </form>
+    </div>
+      <div id="chart_div" class="box"></div>
+      <div class="box" id="chat_div">
+        <div id="txtBox">
+          <h1 id="questionHeader">Live Questions:</h1>
+          <form action="/deleteNames" method="post" id="chat_div2">
+            <input type="submit" name="" value="Delete Selected"></input>
+          </form>
+        </div>
+      </div>
+      <script src="js/main.js"></script>
+  </body>
+</html>
