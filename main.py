@@ -152,7 +152,6 @@ class AddQuestion(webapp2.RequestHandler):
         new_question.student = (GetStudent(users.get_current_user())).key.urlsafe()
         new_question.put()
         self.redirect('/studentSession')
-
 class AddNumber(webapp2.RequestHandler):
     def post(self):
         if GetTeacherFromStudent(GetStudent(users.get_current_user())).formProperty == True:
@@ -199,12 +198,6 @@ class TeacherSessionPage(webapp2.RequestHandler):
         data = {
             "open_close" : "Open",
             "tCode": int(GetTeacher(user).code),
-            "numOf1": len(number1),
-            "numOf2": len(number2),
-            "numOf3": len(number3),
-            "numOf4": len(number4),
-            "numOf5": len(number5),
-            "questions": questions
         }
         if GetTeacher(users.get_current_user()).formProperty == True:
             data["open_close"] = "Open"
@@ -247,7 +240,7 @@ class FormBool(webapp2.RequestHandler):
 
 def toDictQ(question):
     return {
-        "student": question.student,
+        "studentemail": ndb.Key(urlsafe=question.student).get().email,
         "question_text": question.question_text,
         "timestamp": question.timestamp,
         "key": question.key.urlsafe()
@@ -255,6 +248,8 @@ def toDictQ(question):
 
 def toDictC(student):
     return {
+        "key": student.key.urlsafe(),
+        "email": student.email,
         "num1to5": student.num1to5
     }
 

@@ -2,22 +2,23 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Live Session</title>
     <link rel = "stylesheet" href="/css/studentSession.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="icon" href="/lmk.ico" type="image/x-icon">
   </head>
   <body>
     <h1>{{sCode}}</h1>
     <center><h1 class="understandingheader">Enter your level of understanding:</h1>
 
-     <h2>{{open_closed}}</h2> 
+     <h2>{{open_closed}}</h2>
     <form method="post" action="/addNumber" >
       <select name="understanding" class="understanding">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="5">Five (Totally understand!)</option>
         <option value="4">Four</option>
-        <option value="5">Five</option>
+        <option value="3">Three</option>
+        <option value="2">Two</option>
+        <option value="1">One (I'm lost!)</option>
       </select><br><br>
       <button type="submit" class="und_submit">Submit Feedback</button>
     </form>
