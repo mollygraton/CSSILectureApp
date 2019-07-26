@@ -31,6 +31,16 @@ body {
     width: 90%;
   }
 }
+#openOrClose {
+  font-family:'Montserrat', sans-serif;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:200px;
+  margin-right:27%;
+}
 
 input[type="submit"] {
     padding:5px 15px;
@@ -43,8 +53,10 @@ input[type="submit"] {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     border-radius:200px;
-    text-align:center;
+    margin-left:25%;
 }
+
+
 
 #chat_div {
   background-color: white;
@@ -87,15 +99,7 @@ input[type="submit"] {
   color:white;
 }
 
-#openOrClose {
-  font-family:'Montserrat', sans-serif;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  border-radius:200px;
-}
+
 
 /* .box{
 
