@@ -6,6 +6,7 @@ body {
 
   -webkit-animation: AnimationName 38s ease infinite;
   animation: AnimationName 38s ease infinite;
+  margin:auto;
 }
 
 .navbar {
