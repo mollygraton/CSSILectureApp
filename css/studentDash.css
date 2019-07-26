@@ -95,7 +95,6 @@ h1 {
   color: transparent;
   background-color:#aac6fa;
 
-
 }
 
 #sessionCode {
@@ -113,6 +112,10 @@ h1 {
   font: "Fira Sans", sans-serif;
   color: #9fbff9;
   border-radius:30px;
+  }
+
+  #notCorrect {
+    font-size: 30px;
   }
 
 ::placeholder {

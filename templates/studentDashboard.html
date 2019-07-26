@@ -11,10 +11,12 @@
     <div class="navbar">
       <a href="/">home</a>
     </div>
+  <div id="sessionEntry">
     <form action="/studentDashboard" method="post">
       <h1 class="text">Enter Your Session Code: </h1><input type="text" name="code" id="codeInput" placeholder=" Session Code (example: 715)" ></input>
     </form>
-    <p>{{notCorrect}}</p>
+    <p id="notCorrect">{{notCorrect}}</p>
+  </div>
   </body>
 </html>
 <!-- id="sessionCode" -->
