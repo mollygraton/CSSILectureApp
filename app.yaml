@@ -13,8 +13,8 @@ handlers:
   static_dir: css
 - url: /js
   static_dir: js
-- url: /lmk\.ico
-  static_files: lmk.ico
-  upload: lmk\.ico
+- url: /static/images/lmk.ico
+  static_files: static/images/lmk.ico
+  upload: static/images/lmk.ico
 - url: /.*
   script: main.app
