@@ -4,7 +4,7 @@ body {
   /* vertical-align: middle; */
   background: linear-gradient(116deg, #8a96f9, #131d36, #226092);
   background-size: 600% 600%;
-
+  margin: auto;
   -webkit-animation: AnimationName 38s ease infinite;
   animation: AnimationName 38s ease infinite;
 }
