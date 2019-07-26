@@ -1,8 +1,22 @@
 body {
-  background-color: #aac6fa;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(116deg, #8a96f9, #131d36, #226092);
+  background-size: 600% 600%;
 
+  -webkit-animation: AnimationName 38s ease infinite;
+  animation: AnimationName 38s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 28%}
+    50%{background-position:100% 73%}
+    100%{background-position:0% 28%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 28%}
+    50%{background-position:100% 73%}
+    100%{background-position:0% 28%}
 }
 
 #tInfo {

@@ -5,8 +5,34 @@ body {
   vertical-align: middle;
 }
 
+@-webkit-keyframes color-change {
+    0% { color: white; }
+    50% { color: #cce6ff; }
+    100% { color: white; }
+}
+
+@-ms-keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
+@-o-keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
+@keyframes color-change {
+  0% { color: white; }
+  50% { color: #cce6ff; }
+  100% { color: white; }
+}
+
 .understandingheader {
   font-size:50px;
+  -webkit-animation: color-change 5s infinite;
+  -o-animation: color-change 1s infinite;
+  -ms-animation: color-change 1s infinite;
+  animation: color-change 10s infinite;
 }
 
 .understanding {
@@ -31,6 +57,10 @@ body {
 
 .questionheader {
   font-size:50px;
+  -webkit-animation: color-change 7s infinite;
+  -o-animation: color-change 1s infinite;
+  -ms-animation: color-change 1s infinite;
+  animation: color-change 10s infinite;
 }
 
 .questionbox {
