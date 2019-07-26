@@ -2,7 +2,7 @@ body {
   text-align: center;
   font: 300 1em "Fira Sans", sans-serif;
   color: white;
-  font-size: 5vh;
+
   font-weight: 500;
   justify-content: center;
   align-content: center;
@@ -25,6 +25,31 @@ body {
     0%{background-position:0% 28%}
     50%{background-position:100% 73%}
     100%{background-position:0% 28%}
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #131d36;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+}
+
+
+
+/* Links inside the navbar */
+.navbar a {
+  float: right;
+  display: block;
+  color: gray;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover{
+  background-color:#184467;
+  color:white;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -60,6 +85,7 @@ h1 {
   -o-animation: color-change 1s infinite;
   -ms-animation: color-change 1s infinite;
   animation: color-change 10s infinite;
+  font-size: 5vh;
 }
 
 

@@ -26,9 +26,14 @@
   </head>
   <body>
 
-    <div id="box">
+
     {% if user %}
+    <div class="navbar">
+      <a href="{{logout_url}}">log out</a>
+    </div>
+    <div id="box">
     <form>
+
     <h1>Are you a
 <div class="buttons">
     <button class = "pulse" formaction="/studentDashboard">Student</button>
@@ -37,13 +42,19 @@
 
     </h1>
 
-    <a href="{{logout_url}}">Logout</a>
+
     </form>
+    </div>
     {% else %}
+    <div class="navbar">
+      <a href="{{login_url}}" class="login">log in</a>
+    </div>
+    <div id="box">
+
     <form>
 
     <h1 id = "title">lmk</h1>
-    <a href="{{login_url}}">Login</a>
+
     </form>
   </div>
     {% endif %}

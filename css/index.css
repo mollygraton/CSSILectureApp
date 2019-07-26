@@ -37,7 +37,6 @@ animation: AnimationName 38s ease infinite;
 
   font-size: 4vh;
   /* background-image: linear-gradient(to right, #1629a1, #65b3e0, #a6bde0); */
-  text-align:center;
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
@@ -46,8 +45,36 @@ animation: AnimationName 38s ease infinite;
   margin-left: 3vh;
   margin-right: 3vh;
   padding: 50px;
+  text-align:center;
+
 
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: #131d36;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+}
+
+
+
+/* Links inside the navbar */
+.navbar a {
+  float: right;
+  display: block;
+  color: gray;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover{
+  background-color:#184467;
+  color:white;
+}
+
 
 .fill:hover, .fill:focus {
   box-shadow: inset 0 0 0 2em var(--hover);

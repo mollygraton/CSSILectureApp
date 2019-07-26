@@ -8,8 +8,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="navbar">
+      <a href="/">home</a>
+    </div>
     <form action="/studentDashboard" method="post">
-      <h1 class="text">Enter Your Session Code: </h1><input type="text" name="code" id="codeInput" placeholder=" (example: 715)" ></input>
+      <h1 class="text">Enter Your Session Code: </h1><input type="text" name="code" id="codeInput" placeholder=" Session Code (example: 715)" ></input>
     </form>
     <p>{{notCorrect}}</p>
   </body>
